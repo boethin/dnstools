@@ -14,7 +14,7 @@ The C# library includes tools for querying DNS servers and resolving DNS queries
   - [RFC 3425](http://tools.ietf.org/html/rfc3425) Obsoleting IQUERY.
   - [RFC 1996](http://tools.ietf.org/html/rfc1996) A Mechanism for Prompt Notification of Zone Changes (DNS NOTIFY)
   - [RFC 3596](http://tools.ietf.org/html/rfc3596) DNS Extensions to Support IP Version 6 (AAAA RRs).
-  - [RFC 2782](http://tools.ietf.org/html/rfc3403) A DNS RR for specifying the location of services (SRV RRs).
+  - [RFC 2782](http://tools.ietf.org/html/rfc2782) A DNS RR for specifying the location of services (SRV RRs).
   - [RFC 3403](http://tools.ietf.org/html/rfc3403) Dynamic Delegation Discovery System (NAPTR RRs).
   - [RFC 4408](http://tools.ietf.org/html/rfc4408) Sender Policy Framework (SPF RRs).
 
@@ -27,7 +27,7 @@ The C# library includes tools for querying DNS servers and resolving DNS queries
 Project structure
 -----------------
 
-The library consists of two projects:
+### Core projects
 
 ##### Boethin.Net.DnsTools.DnsClient
 
@@ -43,7 +43,7 @@ The resolver is serializable such that it's state can be saved after each iterat
 
 The mapping of IP addresses to ARPA domains for reverse resolution is implemeted by way of an extension of the System.Net.IPAddress class.
 
-### Additionally there are test projects provided
+### Additional test projects
 
 ##### Boethin.Net.DnsTools.Tests.ClientApp
 
@@ -60,6 +60,7 @@ Remarks:
 --------
 
 The resolver library contains a mirror of the IANA Root Hints File wich needs to be synchronized.
+
 Source: [http://www.iana.org/domains/root/servers](http://www.iana.org/domains/root/servers)
 
 The library is implemented in .NET 3.5. Buth Visual Studio solutions (Boethin.Net.DnsTools.sln and Boethin.Net.DnsTools.Tests.sln) can be opened with Visual studio 2010 express.
