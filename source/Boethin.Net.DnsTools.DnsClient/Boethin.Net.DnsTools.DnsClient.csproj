@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{4C2EA503-2794-445A-B12A-75EA0999BC6A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Boethin.Net.DnsTools.DnsClient</RootNamespace>
+    <AssemblyName>Boethin.Net.DnsTools.DnsClient</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\bin\Release\</OutputPath>
+    <DefineConstants>
+    </DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\..\bin\Release\Boethin.Net.DnsTools.DnsClient.xml</DocumentationFile>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <NoWarn>1591</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DNS\QR.cs" />
+    <Compile Include="DNS\Records\Address.cs" />
+    <Compile Include="DNS\Records\AAAA.cs" />
+    <Compile Include="DNS\Records\CNAME.cs" />
+    <Compile Include="DNS\Records\MX.cs" />
+    <Compile Include="DNS\Records\NAPTR.cs" />
+    <Compile Include="DNS\Records\OPT.cs" />
+    <Compile Include="DNS\Records\PTR.cs" />
+    <Compile Include="DNS\Records\SPF.cs" />
+    <Compile Include="DNS\Records\SRV.cs" />
+    <Compile Include="DNS\Records\TXT.cs" />
+    <Compile Include="Extensions\ByteExtensions.cs" />
+    <Compile Include="Internal\HashFunction.cs" />
+    <Compile Include="Datagram.cs" />
+    <Compile Include="DNS\QCLASS.cs" />
+    <Compile Include="DNS\Question.cs" />
+    <Compile Include="DNS\QTYPE.cs" />
+    <Compile Include="InvalidResponseException.cs" />
+    <Compile Include="Logging\IMessageLogger.cs" />
+    <Compile Include="Logging\LogMessage.cs" />
+    <Compile Include="Logging\LogMessageLevel.cs" />
+    <Compile Include="Logging\LogMessageState.cs" />
+    <Compile Include="Logging\LogMessageText.cs" />
+    <Compile Include="Logging\LogMessageEvent.cs" />
+    <Compile Include="Logging\Resources\LogMessages.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LogMessages.resx</DependentUpon>
+    </Compile>
+    <Compile Include="NetworkProtocol.cs" />
+    <Compile Include="Request.cs" />
+    <Compile Include="Response.cs" />
+    <Compile Include="DNS\RRBase.cs" />
+    <Compile Include="IDnsClient.cs" />
+    <Compile Include="Internal\AsyncResult.cs" />
+    <Compile Include="DnsUdpClient.cs" />
+    <Compile Include="DNS\Message.cs" />
+    <Compile Include="DNS\Header.cs" />
+    <Compile Include="Internal\IRequestWriter.cs" />
+    <Compile Include="Internal\IResponseReader.cs" />
+    <Compile Include="MessageEvent.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="DNS\OPCODE.cs" />
+    <Compile Include="DNS\RCODE.cs" />
+    <Compile Include="Internal\ByteWriter.cs" />
+    <Compile Include="Internal\ByteReader.cs" />
+    <Compile Include="DNS\RR.cs" />
+    <Compile Include="DNS\Records\A.cs" />
+    <Compile Include="DNS\Records\Default.cs" />
+    <Compile Include="DNS\Records\NS.cs" />
+    <Compile Include="DNS\Records\SOA.cs" />
+    <Compile Include="DnsTcpClient.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Logging\Resources\LogMessages.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>LogMessages.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

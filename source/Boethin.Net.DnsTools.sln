@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual C# Express 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Boethin.Net.DnsTools.DnsClient", "Boethin.Net.DnsTools.DnsClient\Boethin.Net.DnsTools.DnsClient.csproj", "{4C2EA503-2794-445A-B12A-75EA0999BC6A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Boethin.Net.DnsTools.Resolution", "Boethin.Net.DnsTools.Resolution\Boethin.Net.DnsTools.Resolution.csproj", "{BF405AD7-EEEA-430D-9093-E391080F78E9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4C2EA503-2794-445A-B12A-75EA0999BC6A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C2EA503-2794-445A-B12A-75EA0999BC6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C2EA503-2794-445A-B12A-75EA0999BC6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C2EA503-2794-445A-B12A-75EA0999BC6A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BF405AD7-EEEA-430D-9093-E391080F78E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF405AD7-EEEA-430D-9093-E391080F78E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF405AD7-EEEA-430D-9093-E391080F78E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF405AD7-EEEA-430D-9093-E391080F78E9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

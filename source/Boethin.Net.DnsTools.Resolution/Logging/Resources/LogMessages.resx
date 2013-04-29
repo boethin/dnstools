@@ -1,0 +1,216 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AnyRecordResolutionSucceeded" xml:space="preserve">
+    <value>SOA found, but no other RRs in reply to 'ANY' query.</value>
+  </data>
+  <data name="AnyRecordResolutionSucceeded2" xml:space="preserve">
+    <value>{0} Resouce Records were found in reply to 'ANY' query.</value>
+  </data>
+  <data name="AuthoritySelected" xml:space="preserve">
+    <value>Name server '{0}' has been selected.</value>
+  </data>
+  <data name="CNameFound" xml:space="preserve">
+    <value>The name '{0}' is an alias for the canonical name '{1}'.</value>
+  </data>
+  <data name="CNameNoFollow" xml:space="preserve">
+    <value>The resolver is not configured to follow the canonical name.</value>
+  </data>
+  <data name="ContinuingResultion" xml:space="preserve">
+    <value>Continuing resolution of '{0}' with '{1}' authority.</value>
+  </data>
+  <data name="MissingRecords" xml:space="preserve">
+    <value>No Resource Record of type '{0}' was found.</value>
+  </data>
+  <data name="NameNotExisting" xml:space="preserve">
+    <value>The name '{0}' does not exist.</value>
+  </data>
+  <data name="NameServerResolved" xml:space="preserve">
+    <value>Name server '{0}' has been resolved, continuing with '{1}'.</value>
+  </data>
+  <data name="NegativeResponse" xml:space="preserve">
+    <value>Negative Response: {0}.</value>
+  </data>
+  <data name="NextAuthoritiesReceived" xml:space="preserve">
+    <value>{2} authorities of '{1}' from '{0}'.</value>
+  </data>
+  <data name="QueryNotImplemented" xml:space="preserve">
+    <value>The name server does not support queries of type '{0}'.</value>
+  </data>
+  <data name="RecordResolutionSucceeded" xml:space="preserve">
+    <value>A Resouce Records of type '{0}' was found.</value>
+  </data>
+  <data name="RecordResolutionSucceeded2" xml:space="preserve">
+    <value>{1} Resouce Records of type '{0}' were found.</value>
+  </data>
+  <data name="RepeatingTruncatedAnswer" xml:space="preserve">
+    <value>A truncated answer has been received, so the request needs to be repeated via TCP.</value>
+  </data>
+  <data name="RequestDuration" xml:space="preserve">
+    <value>Request took {0}ms.</value>
+  </data>
+  <data name="ResolutionFinished" xml:space="preserve">
+    <value>Resolution finished, took {0} steps.</value>
+  </data>
+  <data name="ResolvingNameServer" xml:space="preserve">
+    <value>Name server '{0}' needs to be resolved first.</value>
+  </data>
+  <data name="ResourceRecordFound" xml:space="preserve">
+    <value>Resource Record '{1}' of type {0} found.</value>
+  </data>
+  <data name="ResourceRecordFoundA" xml:space="preserve">
+    <value>IPv4 address '{0}' found: {1}.</value>
+  </data>
+  <data name="ResourceRecordFoundAAAA" xml:space="preserve">
+    <value>IPv6 address '{0}' found: {1}.</value>
+  </data>
+  <data name="ResourceRecordFoundNS" xml:space="preserve">
+    <value>Name server '{0}' found.</value>
+  </data>
+  <data name="ResourceRecordFoundPTR" xml:space="preserve">
+    <value>Pointer '{0}' found: '{1}'.</value>
+  </data>
+  <data name="ResponseInvalid" xml:space="preserve">
+    <value>Invalid response: {0}</value>
+  </data>
+  <data name="SendingRequest" xml:space="preserve">
+    <value>Sending DNS request using {1} to '{0}'.</value>
+  </data>
+  <data name="ServerFailure" xml:space="preserve">
+    <value>The name server was unable to process this query due to a problem with the name server.</value>
+  </data>
+  <data name="ServerRefused" xml:space="preserve">
+    <value>The name server refuses to perform the specified operation for policy easons.</value>
+  </data>
+  <data name="SingleAddressResolutionSucceeded" xml:space="preserve">
+    <value>Name '{0}' has been successfully resolved to '{1}'.</value>
+  </data>
+  <data name="SinglePointerResolutionSucceeded" xml:space="preserve">
+    <value>Pointer resolution succeeded with the name '{0}'.</value>
+  </data>
+  <data name="StartingResultion" xml:space="preserve">
+    <value>Starting resolution of '{0}' with a '{1}' authority.</value>
+  </data>
+  <data name="StartingResultionRoot" xml:space="preserve">
+    <value>Starting resolution of '{0}' with a root name server.</value>
+  </data>
+  <data name="UnexpectedRCode" xml:space="preserve">
+    <value>Unexpected RCODE value {0} '{1}' received.</value>
+  </data>
+</root>
