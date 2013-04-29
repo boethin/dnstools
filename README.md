@@ -1,21 +1,24 @@
 Boethin.Net.DnsTools, a DNS debugging library.
+==============================================
 
 The C# library includes tools for querying DNS servers and resolving DNS queries via UDP and TCP using IPv4 and IPv6.
 
 The goals of the project:
+=========================
   - Error recovery in DNS configurations.
   - Experimental investigation of possibilities in the DNS.
   - Development of ways to optimize client implementations.
   
 The following specifications has been taken into consideration:
-  [RFC 1035] Domain Names - Implementation and Specification.
-  [RFC 2181} Clarifications to the DNS Specification.
-  [RFC 3425] Obsoleting IQUERY.
-  [RFC 1996] A Mechanism for Prompt Notification of Zone Changes (DNS NOTIFY)
-  [RFC 3596] DNS Extensions to Support IP Version 6 (AAAA RRs).
-  [RFC 2782] A DNS RR for specifying the location of services (SRV RRs).
-  [RFC 3403] Dynamic Delegation Discovery System (NAPTR RRs).
-  [RFC 4408] Sender Policy Framework (SPF RRs).
+---------------------------------------------------------------
+  - [RFC 1035] Domain Names - Implementation and Specification.
+  - [RFC 2181} Clarifications to the DNS Specification.
+  - [RFC 3425] Obsoleting IQUERY.
+  - [RFC 1996] A Mechanism for Prompt Notification of Zone Changes (DNS NOTIFY)
+  - [RFC 3596] DNS Extensions to Support IP Version 6 (AAAA RRs).
+  - [RFC 2782] A DNS RR for specifying the location of services (SRV RRs).
+  - [RFC 3403] Dynamic Delegation Discovery System (NAPTR RRs).
+  - [RFC 4408] Sender Policy Framework (SPF RRs).
 
 Future plans:
   - Implementation of EDNS [RFC 2671].
