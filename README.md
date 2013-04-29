@@ -32,9 +32,12 @@ Project structure
 
 ##### *Boethin.Net.DnsTools.DnsClient*
 
-This project contains a DNS client interface (*IDnsClient*) and a mapping of DNS data to a serializable class structure. The interface is implemented two classes, providing UDP and TCP access to DNS servers.
+This project contains a DNS client interface *IDnsClient* and a mapping of DNS data to a serializable class structure. The interface is implemented by two classes:
 
-The client classes are implemented as extensions of the standard network clients provided by the .NET framework (*System.Net.Sockets.UdpClient*, *System.Net.Sockets.TcpClient*). This way the greatest possible flexibility is ensured with minimal implementation effort.
+   - *DnsUdpClient*: A UDP client, extending *System.Net.Sockets.UdpClient*.
+   - *DnsTcpClient*: A TCP client, extending *System.Net.Sockets.TcpClient*.
+
+The client classes are implemented as extensions of the standard network clients provided by the .NET framework. This way the greatest possible flexibility is ensured with minimal implementation effort.
 
 ##### *Boethin.Net.DnsTools.Resolution*
 
