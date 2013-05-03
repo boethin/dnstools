@@ -42,6 +42,7 @@ namespace Boethin.Net.DnsTools.Tests.ConsoleResolver
     {
       try
       {
+        File.Delete(filename);
 
         bool interactive = false;
 

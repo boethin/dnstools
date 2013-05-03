@@ -92,7 +92,6 @@ namespace Boethin.Net.DnsTools.Resolution.Iterators
       return null;
     }
 
-
     //internal static IEnumerable<DnsClient.DNS.Records.Address> GetAddresses(DnsDomain sname, DnsClient.Response response)
     //{
     //  IEnumerable<DnsClient.DNS.RR> rrset;
@@ -100,7 +99,7 @@ namespace Boethin.Net.DnsTools.Resolution.Iterators
     //  {
     //    rrset = response.AnswerRecords;
     //  }
-    //  else 
+    //  else
     //  {
     //    rrset = response.AdditionalRecords;
     //  }

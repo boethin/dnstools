@@ -22,7 +22,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Boethin.Net.DnsTools.Resolution.Extensions;
 using System.Net;
 using System.Reflection;
 
@@ -37,7 +36,7 @@ namespace Boethin.Net.DnsTools.Resolution.Iterators
 
     private Results.ResolutionResult LastAddressResult = null;
 
-    private IEnumerable<DnsClient.DNS.Records.Address> ResolvedAddresses = null;
+    private DnsClient.DNS.Records.Address[] ResolvedAddresses = null;
 
     private AddressIterator AddressIterator = null;
 
@@ -138,7 +137,7 @@ namespace Boethin.Net.DnsTools.Resolution.Iterators
         if (isAddressIteratorCompleted)
         {
           // remember the last result from the subsequent iteration
-          ResolvedAddresses = AddressIterator.GetAddresses(addressResult);
+          ResolvedAddresses = AddressIterator.GetAddresses(addressResult).ToArray();
           if (!ResolvedAddresses.Any())
           { 
             // Failed to resolve
@@ -161,9 +160,21 @@ namespace Boethin.Net.DnsTools.Resolution.Iterators
         try
         {
 
-          throw new NotImplementedException();
+          //throw new NotImplementedException();
 
           // Apply the resulting address records to the selected authority.
+          if (LastAddressResult.Response.Header.AA)
+          { 
+            // fetch addresses from authoritative respone
+            IEnumerable<DnsClient.DNS.Records.Address> addresses = LastAddressResult.Response.AnswerRecords.OfType<
+              DnsClient.DNS.Records.Address>().Where(a => StoredAuthorities.Selected.Name.Equals(a.Base.NAME));
+            if (addresses.Any())
+            {
+              StoredAuthorities.Selected.ApplyAddresses(addresses);
+              OnNameServerResolved(StoredAuthorities.Selected);
+            }
+          }
+
           //IEnumerable<DnsClient.DNS.Records.Address> addresses = Iterators.AddressIterator.GetAddresses(
           //  StoredAuthorities.Selected.Name, LastAddressResult.Response);
           //if (addresses.Any())
@@ -171,10 +182,10 @@ namespace Boethin.Net.DnsTools.Resolution.Iterators
           //  StoredAuthorities.Selected.ApplyAddresses(addresses);
           //  OnNameServerResolved(StoredAuthorities.Selected);
           //}
-          //else 
-          //{ 
+          //else
+          //{
 
-          
+
           //}
         }
         finally
