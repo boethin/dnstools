@@ -178,7 +178,6 @@ namespace Boethin.Net.DnsTools.Resolution.Internal
       // Check for relevant answer RRs matching the canonical name and STYPE.
       IEnumerable<DnsClient.DNS.RR> answers = Response.AnswerRecords.Where(
         rr => canonical.Equals(rr.Base.NAME)).OfQuestion(STYPE);
-
       if (answers.Any())
       {
         // Found answer RRs matching the query.
@@ -201,7 +200,7 @@ namespace Boethin.Net.DnsTools.Resolution.Internal
       DnsClient.DNS.Records.SOA soa = Response.AuthorityRecords.FirstOrDefault<
         DnsClient.DNS.Records.SOA>();
       NameServerCollection authorities = FindAuthorities(canonical);
-      if (!object.ReferenceEquals(null, soa) || !authorities.Any())
+      if (!object.ReferenceEquals(null, soa) || authorities.Any())
       {
         // NODATA
         // Do not treat as referral (cf.: [RFC 2308], 2.2 - No Data)

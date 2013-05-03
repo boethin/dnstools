@@ -159,9 +159,6 @@ namespace Boethin.Net.DnsTools.Resolution.Iterators
         // An address iteration has been completed in the previous step.
         try
         {
-
-          //throw new NotImplementedException();
-
           // Apply the resulting address records to the selected authority.
           if (LastAddressResult.Response.Header.AA)
           { 
@@ -174,25 +171,11 @@ namespace Boethin.Net.DnsTools.Resolution.Iterators
               OnNameServerResolved(StoredAuthorities.Selected);
             }
           }
-
-          //IEnumerable<DnsClient.DNS.Records.Address> addresses = Iterators.AddressIterator.GetAddresses(
-          //  StoredAuthorities.Selected.Name, LastAddressResult.Response);
-          //if (addresses.Any())
-          //{
-          //  StoredAuthorities.Selected.ApplyAddresses(addresses);
-          //  OnNameServerResolved(StoredAuthorities.Selected);
-          //}
-          //else
-          //{
-
-
-          //}
         }
         finally
         {
           LastAddressResult = null;
         }
-
       }
 
       else
