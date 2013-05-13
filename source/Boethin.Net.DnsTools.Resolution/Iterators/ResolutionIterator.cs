@@ -160,16 +160,23 @@ namespace Boethin.Net.DnsTools.Resolution.Iterators
         try
         {
           // Apply the resulting address records to the selected authority.
+          IEnumerable<DnsClient.DNS.Records.Address> addresses;
           if (LastAddressResult.Response.Header.AA)
-          { 
+          {
             // fetch addresses from authoritative respone
-            IEnumerable<DnsClient.DNS.Records.Address> addresses = LastAddressResult.Response.AnswerRecords.OfType<
+            addresses = LastAddressResult.Response.AnswerRecords.OfType<
               DnsClient.DNS.Records.Address>().Where(a => StoredAuthorities.Selected.Name.Equals(a.Base.NAME));
-            if (addresses.Any())
-            {
-              StoredAuthorities.Selected.ApplyAddresses(addresses);
-              OnNameServerResolved(StoredAuthorities.Selected);
-            }
+          }
+          else
+          {
+            // fetch address from additional records
+            addresses = LastAddressResult.Response.AdditionalRecords.OfType<
+              DnsClient.DNS.Records.Address>().Where(a => StoredAuthorities.Selected.Name.Equals(a.Base.NAME));
+          }
+          if (addresses.Any())
+          {
+            StoredAuthorities.Selected.ApplyAddresses(addresses);
+            OnNameServerResolved(StoredAuthorities.Selected);
           }
         }
         finally
