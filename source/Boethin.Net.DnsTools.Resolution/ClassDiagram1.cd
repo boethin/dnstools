@@ -1,0 +1,269 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Boethin.Net.DnsTools.Resolution.Caching.AddressCache" Collapsed="true">
+    <Position X="5.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Caching\AddressCache.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Boethin.Net.DnsTools.Resolution.Caching.DomainCache&lt;TElement&gt;" Collapsed="true">
+    <Position X="5.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABABAAAAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>Caching\DomainCache.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Boethin.Net.DnsTools.Resolution.Caching.DomainTreeCache&lt;TElement&gt;" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="11.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABABAAAAAABAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Caching\DomainTreeCache.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Boethin.Net.DnsTools.Resolution.Caching.ExpirableElement&lt;TElement&gt;" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="13.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAIAAAAAAAAAAgAAAAABAAAAAAAAAAEEAAAAAA=</HashCode>
+      <FileName>Caching\ExpirableElement.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Boethin.Net.DnsTools.Resolution.DnsDomain" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="8" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AaAgIAAAAAIAADAEgAAAAABAAAAAAIABgAAAAAAgAAA=</HashCode>
+      <FileName>DnsDomain.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Boethin.Net.DnsTools.Resolution.DnsLabel" Collapsed="true">
+    <Position X="9.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AJAgIAAAAAAAAAEEgAAAAAAAAABAAIBAAAAAAAAAAAA=</HashCode>
+      <FileName>DnsLabel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Boethin.Net.DnsTools.Resolution.NameServer" Collapsed="true">
+    <Position X="3.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAABAQAAAAAAAAAQAAAAAAAAAAAAA=</HashCode>
+      <FileName>NameServer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Boethin.Net.DnsTools.Resolution.NameServerCollection" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="13.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACJAAgAAAAAAAQAACAIIIAQAAAAIAEAhAAIAABAACAI=</HashCode>
+      <FileName>NameServerCollection.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Boethin.Net.DnsTools.Resolution.NameServerEventArgs" Collapsed="true">
+    <Position X="15" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAAAAAEAAAAAAAACgAIIAAAgAAAAAAAAAA=</HashCode>
+      <FileName>NameServerEvent.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Boethin.Net.DnsTools.Resolution.NetworkHost">
+    <Position X="3.5" Y="4.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAAAAAAAEAAIAIAQAAAABAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>NetworkHost.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Name" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="Addresses" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Boethin.Net.DnsTools.Resolution.Options" Collapsed="true">
+    <Position X="8" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIQAAAAAAgACAIACAACAAAAA=</HashCode>
+      <FileName>Options.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Boethin.Net.DnsTools.Resolution.Resolver" Collapsed="true">
+    <Position X="15" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAQAAAAAABAIAAAhAAAEAAgAAAIABAIAY=</HashCode>
+      <FileName>Resolver.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Boethin.Net.DnsTools.Resolution.ResolverException" Collapsed="true">
+    <Position X="8" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ResolverException.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Boethin.Net.DnsTools.Resolution.RootServers" Collapsed="true">
+    <Position X="9.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>RootServers.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Boethin.Net.DnsTools.Resolution.Extensions.IPAddressExtensions" Collapsed="true">
+    <Position X="15" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAA=</HashCode>
+      <FileName>Extensions\IPAddressExtensions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Boethin.Net.DnsTools.Resolution.Extensions.RRLinqExtensions" Collapsed="true">
+    <Position X="11.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAAAAAQAAAAABAAAAAAAAAAAAAAAAQAAAAAA=</HashCode>
+      <FileName>Extensions\RRLinqExtensions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Boethin.Net.DnsTools.Resolution.Internal.QueryException" Collapsed="true">
+    <Position X="9.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Internal\QueryException.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Boethin.Net.DnsTools.Resolution.Internal.QueryProcessor" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="11.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQACAAAAARAAAQAAggAAAIAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Internal\QueryProcessor.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Boethin.Net.DnsTools.Resolution.Internal.QueryResult" Collapsed="true">
+    <Position X="13.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAQgAAAAAAAAAAAAAAAAAQAAABAAAgAA=</HashCode>
+      <FileName>Internal\QueryResult.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Boethin.Net.DnsTools.Resolution.Iterators.AddressIterator" Collapsed="true">
+    <Position X="0.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAAAAAAAAAAAAAAAGAAAAAAAAAAQAAAAAAAA=</HashCode>
+      <FileName>Iterators\AddressIterator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Boethin.Net.DnsTools.Resolution.Iterators.CNameIterator" Collapsed="true">
+    <Position X="2.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Iterators\CNameIterator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Boethin.Net.DnsTools.Resolution.Iterators.ResolutionIterator" Collapsed="true">
+    <Position X="1.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ECAAAIAAIGSABgQQAAABABAKwEAAgIwAAAAAABAAIgA=</HashCode>
+      <FileName>Iterators\ResolutionIterator.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Boethin.Net.DnsTools.Resolution.Iterators.ResolutionIteratorBase" Collapsed="true">
+    <Position X="1.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BEIBAAAAACAABAAAAACEAAACAIAAghUEIAACAAAACAA=</HashCode>
+      <FileName>Iterators\ResolutionIteratorBase.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Boethin.Net.DnsTools.Resolution.Logging.LogMessage" Collapsed="true">
+    <Position X="8" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Logging\LogMessage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Boethin.Net.DnsTools.Resolution.Logging.LogMessageText" Collapsed="true">
+    <Position X="11.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Logging\LogMessageText.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Boethin.Net.DnsTools.Resolution.Logging.Resources.LogMessages" Collapsed="true">
+    <Position X="9.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BACAAAABCAIAAAPAAgAZEJjBASAIAQAACAICIACAQKg=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Boethin.Net.DnsTools.Resolution.Results.AddressResolutionResult" Collapsed="true">
+    <Position X="0.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Results\AddressResolutionResult.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Boethin.Net.DnsTools.Resolution.Results.ResolutionResult" Collapsed="true">
+    <Position X="0.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEIgAgAAABCAAAAAAAAAAAAAAAAgAQAAAAAgAAAoAg=</HashCode>
+      <FileName>Results\ResolutionResult.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="System.Net.IPAddress" Collapsed="true">
+    <Position X="5.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Interface Name="Boethin.Net.DnsTools.Resolution.Caching.IDomainCache&lt;TElement&gt;" Collapsed="true">
+    <Position X="9.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABABAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Caching\IDomainCache.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Boethin.Net.DnsTools.Resolution.Caching.IExpirableElement&lt;TElement&gt;" Collapsed="true">
+    <Position X="11.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Caching\IExpirableElement.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Boethin.Net.DnsTools.Resolution.IDnsCacheProvider" Collapsed="true">
+    <Position X="8" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IDnsCacheProvider.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Boethin.Net.DnsTools.Resolution.Logging.ILogMessageCreator" Collapsed="true">
+    <Position X="13.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Logging\ILogMessageCreator.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="Boethin.Net.DnsTools.Resolution.IPVersion" Collapsed="true">
+    <Position X="8" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAA=</HashCode>
+      <FileName>IPVersion.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Boethin.Net.DnsTools.Resolution.QueryState">
+    <Position X="9.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAgEAAEAAAQgCAAAIIAAAACEAAAAAAAAAAAAAgIA=</HashCode>
+      <FileName>QueryState.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Delegate Name="Boethin.Net.DnsTools.Resolution.NameServerEventHandler" Collapsed="true">
+    <Position X="8" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>NameServerEvent.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
