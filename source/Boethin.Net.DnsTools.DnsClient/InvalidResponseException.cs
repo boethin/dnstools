@@ -32,6 +32,7 @@ namespace Boethin.Net.DnsTools.DnsClient
   /// client or would lead to inconsistent response data. This meight point either to a misconfigured 
   /// name server or a serious bug in the client software.
   /// </summary>
+  [Serializable] 
   public class InvalidResponseException : System.Exception
   {
 

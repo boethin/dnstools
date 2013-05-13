@@ -33,7 +33,7 @@ namespace Boethin.Net.DnsTools.DnsClient
   /// <summary>
   /// A UDP client for sending DNS requests.
   /// </summary>
-  public class DnsUdpClient : System.Net.Sockets.UdpClient, IDnsClient, Logging.IMessageLogger
+  public sealed class DnsUdpClient : System.Net.Sockets.UdpClient, IDnsClient, Logging.IMessageLogger
   {
 
     // [RFC 1035]
@@ -231,6 +231,15 @@ namespace Boethin.Net.DnsTools.DnsClient
     void Logging.IMessageLogger.LogMessageCreate(Logging.LogMessage message)
     {
       LogMessageCreated(this, new Logging.LogMessageEventArgs(message));
+    }
+
+    #endregion
+
+    #region override
+
+    protected override void Dispose(bool disposing)
+    {
+      base.Dispose(disposing);
     }
 
     #endregion

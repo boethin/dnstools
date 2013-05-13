@@ -35,7 +35,7 @@ namespace Boethin.Net.DnsTools.DnsClient
   /// <summary>
   /// A System.Net.Sockets.TcpClient, extended with the IDnsClient capabilities.
   /// </summary>
-  public class DnsTcpClient : System.Net.Sockets.TcpClient, IDnsClient, Logging.IMessageLogger
+  public sealed class DnsTcpClient : System.Net.Sockets.TcpClient, IDnsClient, Logging.IMessageLogger
   {
 
     // [RFC 1035]
@@ -342,6 +342,15 @@ namespace Boethin.Net.DnsTools.DnsClient
     void Logging.IMessageLogger.LogMessageCreate(Logging.LogMessage message)
     {
       LogMessageCreated(this, new Logging.LogMessageEventArgs(message));
+    }
+
+    #endregion
+
+    #region override
+
+    protected override void Dispose(bool disposing)
+    {
+      base.Dispose(disposing);
     }
 
     #endregion

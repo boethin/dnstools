@@ -180,7 +180,9 @@ namespace Boethin.Net.DnsTools.DnsClient.DNS
             );
 
       }
-      throw new InvalidOperationException("Unexpected QR value.");
+      // throw new InvalidOperationException("Unexpected QR value.");
+      // CA1065	Do not raise exceptions in unexpected locations	
+      return null;
     }
 
     #region private

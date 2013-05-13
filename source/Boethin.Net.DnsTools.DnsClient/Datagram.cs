@@ -32,7 +32,7 @@ namespace Boethin.Net.DnsTools.DnsClient
   /// <summary>
   /// A Datagram is a struct representing a byte array.
   /// </summary>
-  [Serializable] 
+  [Serializable]
   public struct Datagram : IEnumerable<byte>
   {
 
@@ -92,13 +92,7 @@ namespace Boethin.Net.DnsTools.DnsClient
 
     public byte this[int index]
     {
-      get 
-      {
-        if (IsEmpty || !(0 <= index && index < Bytes.Length))
-          throw new IndexOutOfRangeException(
-            "Index was outside the bounds of the array.");
-        return Bytes[index]; 
-      }
+      get { return GetByteAt(index); }
     }
 
     #endregion
@@ -203,7 +197,29 @@ namespace Boethin.Net.DnsTools.DnsClient
 
     #endregion
 
+    #region private
+
+    private byte GetByteAt(int index)
+    {
+      if (IsEmpty || !(0 <= index && index < Bytes.Length))
+        throw new IndexOutOfRangeException(
+          "Index was outside the bounds of the array.");
+      return Bytes[index];
+    }
+
+    #endregion
+
     #region operator
+
+    public static bool operator ==(Datagram a, Datagram b)
+    {
+      return Equals(a, b);
+    }
+
+    public static bool operator !=(Datagram a, Datagram b)
+    {
+      return !Equals(a, b);
+    }
 
     public static implicit operator byte[](Datagram value)
     {
@@ -217,6 +233,27 @@ namespace Boethin.Net.DnsTools.DnsClient
       if (object.ReferenceEquals(null, value) || value.Length == 0)
         return Empty;
       return new Datagram(value);
+    }
+
+    #endregion
+
+    #region public static
+
+    public static bool Equals(Datagram a, Datagram b)
+    {
+      // If both are null, or both are same instance, return true.
+      if (System.Object.ReferenceEquals(a, b))
+      {
+        return true;
+      }
+
+      // If one is null, but not both, return false.
+      if (((object)a == null) || ((object)b == null))
+      {
+        return false;
+      }
+
+      return a.Equals(b);
     }
 
     #endregion
