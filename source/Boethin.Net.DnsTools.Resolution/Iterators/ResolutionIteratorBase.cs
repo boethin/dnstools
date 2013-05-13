@@ -185,10 +185,10 @@ namespace Boethin.Net.DnsTools.Resolution.Iterators
 
     private bool disposed = false;
 
-    void IDisposable.Dispose()
-    {
-      ((ResolutionIteratorBase)this).Dispose();
-    }
+    //void IDisposable.Dispose()
+    //{
+    //  ((ResolutionIteratorBase)this).Dispose();
+    //}
 
     public void Dispose()
     {

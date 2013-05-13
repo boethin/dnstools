@@ -35,11 +35,11 @@ namespace Boethin.Net.DnsTools.Resolution.Caching
   public class ExpirableElement<TElement> : IExpirableElement<TElement>
     where TElement : class
   {
-    
+
     /// <summary>
     /// The expirable element.
     /// </summary>
-    public readonly TElement Element;
+    private readonly TElement _Element;
 
     /// <summary>
     /// The absolute value of expiration considered as system local time.
@@ -59,7 +59,7 @@ namespace Boethin.Net.DnsTools.Resolution.Caching
       if (object.ReferenceEquals(null, element))
         throw new ArgumentNullException("element");
 
-      Element = element;
+      _Element = element;
       Expiration = DateTime.MaxValue;
     }
 
@@ -73,8 +73,22 @@ namespace Boethin.Net.DnsTools.Resolution.Caching
       if (object.ReferenceEquals(null, element))
         throw new ArgumentNullException("element");
 
-      Element = element;
+      _Element = element;
       Expiration = expiration;
+    }
+
+    #endregion
+
+    #region public
+
+    public TElement Element
+    {
+      get { return _Element; }
+    }
+
+    public bool IsExpired(DateTime now)
+    {
+      return now > Expiration;
     }
 
     #endregion
@@ -83,12 +97,12 @@ namespace Boethin.Net.DnsTools.Resolution.Caching
 
     TElement IExpirableElement<TElement>.Element
     {
-      get { return Element; }
+      get { return ((ExpirableElement<TElement>)this).Element; }
     }
 
     bool IExpirableElement<TElement>.IsExpired(DateTime now)
     {
-      return now > Expiration;
+      return ((ExpirableElement<TElement>)this).IsExpired(now);
     }
 
     #endregion

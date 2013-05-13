@@ -20,12 +20,10 @@
  */
 
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace Boethin.Net.DnsTools.Resolution
 {
+  [Serializable] 
   public class ResolverException : System.Exception
   {
 

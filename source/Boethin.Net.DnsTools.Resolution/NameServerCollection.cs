@@ -32,7 +32,7 @@ namespace Boethin.Net.DnsTools.Resolution
   /// <para>A collection of name server objects with the capability to mark one of them as selected.</para>
   /// </summary>
   [Serializable]
-  public class NameServerCollection : IEnumerable<NameServer>
+  public sealed class NameServerCollection : IEnumerable<NameServer>
   {
 
     #region private
