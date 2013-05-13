@@ -31,12 +31,17 @@ namespace Boethin.Net.DnsTools.DnsClient
   public class MessageEventArgs : System.EventArgs
   {
 
+    #region private readonly
+
     private readonly DNS.Message _Message;
 
     private readonly Stream _Data;
 
     private readonly IPEndPoint _EndPoint;
 
+    #endregion
+
+    #region public
 
     public Stream Data
     {
@@ -53,12 +58,18 @@ namespace Boethin.Net.DnsTools.DnsClient
       get { return _EndPoint; }
     }
 
+    #endregion
+
+    #region c'tor
+
     internal MessageEventArgs(DNS.Message message, Stream data, IPEndPoint ep)
     {
       _Message = message;
       _Data = data;
       _EndPoint = ep;
     }
+
+    #endregion
 
   }
 }
