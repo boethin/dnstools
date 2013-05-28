@@ -20,9 +20,6 @@
  */
 
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace Boethin.Net.DnsTools.DnsClient.Logging
 {
@@ -37,17 +34,28 @@ namespace Boethin.Net.DnsTools.DnsClient.Logging
 
     public readonly LogMessageLevel Level;
 
-    public readonly string Message;
+    public readonly string MessageFormat;
+
+    public readonly object[] MessageArgs;
+
+    public string Message
+    {
+      get
+      {
+        return String.Format(MessageFormat, MessageArgs);
+      }
+    }
 
     #endregion
 
     #region c'tor
 
-    internal protected LogMessage(LogMessageState state, LogMessageLevel level, string message)
+    internal protected LogMessage(LogMessageState state, LogMessageLevel level, string message, object[] args)
     {
       this.State = state;
       this.Level = level;
-      this.Message = message;
+      this.MessageFormat = message;
+      this.MessageArgs = args;
     }
 
     #endregion
@@ -65,19 +73,19 @@ namespace Boethin.Net.DnsTools.DnsClient.Logging
 
     internal static void LogRequest(IDnsClient client, int byteLength, System.Net.IPEndPoint remote)
     {
-      ((IMessageLogger)client).LogMessageCreate(LogMessageText.SendingRequest(
+      ((IMessageLogger)client).LogMessageCreate(LogMessageText.REQUEST.INFO.SendingRequest(
           byteLength, client.NetworkProtocol, remote));
     }
 
     internal static void LogResponse(IDnsClient client, int byteLength, DNS.Header header, System.Net.IPEndPoint remote)
     {
-      ((IMessageLogger)client).LogMessageCreate(LogMessageText.ResponseReceived(byteLength, remote));
+      ((IMessageLogger)client).LogMessageCreate(LogMessageText.RESPONSE.INFO.ResponseReceived(byteLength, remote));
 
       if (header.RCODEValue != 0)
-        ((IMessageLogger)client).LogMessageCreate(LogMessageText.ResponseNonZero(header.RCODEValue, header.RCODE));
+        ((IMessageLogger)client).LogMessageCreate(LogMessageText.RESPONSE.WARN.ResponseNonZero(header.RCODEValue, header.RCODE));
 
       if (header.TC)
-        ((IMessageLogger)client).LogMessageCreate(LogMessageText.ResponseTruncated());
+        ((IMessageLogger)client).LogMessageCreate(LogMessageText.RESPONSE.WARN.ResponseTruncated());
 
     }
 

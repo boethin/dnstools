@@ -31,8 +31,8 @@ namespace Boethin.Net.DnsTools.Resolution.Logging
 
     #region c'tor
 
-    internal LogMessage(LogMessageState state, LogMessageLevel level, string message)
-      : base(state, level, message)
+    internal LogMessage(LogMessageState state, LogMessageLevel level, string message, object[] args)
+      : base(state, level, message, args)
     {
     }
 

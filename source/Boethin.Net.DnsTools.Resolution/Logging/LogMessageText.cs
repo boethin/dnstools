@@ -37,56 +37,49 @@ namespace Boethin.Net.DnsTools.Resolution.Logging
 
         public static LogMessage StartingResultion(DnsDomain name)
         {
-          return Create(String.Format(
-            Resources.LogMessages.StartingResultionRoot, name));
+          return Create(Resources.LogMessages.StartingResultionRoot, new object[] { name });
         }
 
         public static LogMessage StartingResultion(DnsDomain name, NameServerCollection authorities)
         {
-          return Create(String.Format(
-            Resources.LogMessages.StartingResultion, name, authorities.ZoneName));
+          return Create(Resources.LogMessages.StartingResultion, new object[] { name, authorities.ZoneName });
         }
 
         public static LogMessage ContinuingResultion(DnsDomain domain, NameServerCollection authorities)
         {
-          return Create(String.Format(
-            Resources.LogMessages.ContinuingResultion, domain.ToString(), authorities.ZoneName));
+          return Create(Resources.LogMessages.ContinuingResultion, new object[] { domain, authorities.ZoneName });
         }
 
         public static LogMessage AuthoritySelected(NameServerCollection authorities)
         {
-          return Create(String.Format(
-            Resources.LogMessages.AuthoritySelected, authorities.Selected.Name.ToString()));
+          return Create(Resources.LogMessages.AuthoritySelected, new object[] { authorities.Selected.Name });
         }
 
         public static LogMessage SendingRequest(System.Net.IPAddress address, DnsClient.NetworkProtocol proto)
         {
-          return Create(String.Format(
-            Resources.LogMessages.SendingRequest, address.ToString(), proto.ToString()));
+          return Create(Resources.LogMessages.SendingRequest, new object[] { address, proto });
         }
 
         public static LogMessage ResolvingNameServer(NameServer unresolved)
         {
-          return Create(String.Format(
-            Resources.LogMessages.ResolvingNameServer, unresolved.Name.ToString()));
+          return Create(Resources.LogMessages.ResolvingNameServer, new object[] { unresolved.Name });
         }
 
         public static LogMessage NameServerResolved(NameServer resolved, DnsDomain domain)
         {
-          return Create(String.Format(
-            Resources.LogMessages.NameServerResolved, resolved.Name.ToString(), domain.ToString()));
+          return Create(Resources.LogMessages.NameServerResolved, new object[] { resolved.Name, domain });
         }
 
-        private static LogMessage Create(string message)
+        private static LogMessage Create(string message, object[] args)
         {
-          return REQUEST.Create(LogMessageLevel.INFO, message);
+          return REQUEST.Create(LogMessageLevel.INFO, message, args);
         }
 
       }
 
-      private static LogMessage Create(LogMessageLevel level, string message)
+      private static LogMessage Create(LogMessageLevel level, string message, object[] args)
       {
-        return new LogMessage(LogMessageState.REQUEST, level, message);
+        return new LogMessage(LogMessageState.REQUEST, level, message, args);
       }
 
       public static LogMessage ResolutionStart(DnsDomain name, NameServerCollection authorities)
@@ -111,89 +104,89 @@ namespace Boethin.Net.DnsTools.Resolution.Logging
 
         public static LogMessage RequestDuration(double duration)
         {
-          return Create(String.Format(
-            Resources.LogMessages.RequestDuration, duration));
+          return Create(Resources.LogMessages.RequestDuration, new object[] { duration });
         }
 
         public static LogMessage SingleAddressResolutionSucceeded(DnsDomain domain, System.Net.IPAddress address)
         {
-          return Create(String.Format(
-            Resources.LogMessages.SingleAddressResolutionSucceeded, domain.ToString(), address.ToString()));
+          return Create(Resources.LogMessages.SingleAddressResolutionSucceeded, new object[] { domain, address });
         }
 
         public static LogMessage SinglePointerResolutionSucceeded(string hostname)
         {
-          return Create(String.Format(
-            Resources.LogMessages.SinglePointerResolutionSucceeded, hostname));
+          return Create(Resources.LogMessages.SinglePointerResolutionSucceeded, 
+            new object[] { hostname });
         }
 
         public static LogMessage RecordResolutionSucceeded(DnsClient.DNS.QTYPE qtype)
         {
-          return Create(String.Format(
-            Resources.LogMessages.RecordResolutionSucceeded, qtype.ToString()));
+          return Create(Resources.LogMessages.RecordResolutionSucceeded, 
+            new object[] { qtype });
         }
 
         public static LogMessage RecordResolutionSucceeded(DnsClient.DNS.QTYPE qtype, int count)
         {
-          return Create(String.Format(
-            Resources.LogMessages.RecordResolutionSucceeded2, qtype.ToString(), count));
+          return Create(Resources.LogMessages.RecordResolutionSucceeded2, 
+            new object[] { qtype, count });
         }
 
         public static LogMessage AnyRecordResolutionSucceeded()
         {
-          return Create(String.Format(
-            Resources.LogMessages.AnyRecordResolutionSucceeded));
+          return Create(Resources.LogMessages.AnyRecordResolutionSucceeded, 
+            new object[] { });
         }
 
         public static LogMessage AnyRecordResolutionSucceeded(int count)
         {
-          return Create(String.Format(
-            Resources.LogMessages.AnyRecordResolutionSucceeded2, count));
+          return Create(Resources.LogMessages.AnyRecordResolutionSucceeded2, 
+            new object[] { count });
         }
 
         public static LogMessage NextAuthoritiesReceived(DnsDomain server, DnsDomain name, NameServerCollection nextAuthorities)
         {
-          // {2} authorities of '{1}' from '{0}'.
-          return Create(String.Format(
-            Resources.LogMessages.NextAuthoritiesReceived, server.ToString(), name.ToString(), nextAuthorities.Count));
+          return Create(Resources.LogMessages.NextAuthoritiesReceived, 
+            new object[] { server, name, nextAuthorities.Count });
         }
 
         public static LogMessage ResourceRecordFound(DnsClient.Response response, DnsClient.DNS.RR rr)
         {
-          return Create(String.Format(Resources.LogMessages.ResourceRecordFound, rr.Base.TYPE, rr.Base.NAME));
+          return Create(Resources.LogMessages.ResourceRecordFound, 
+            new object[] { rr.Base.TYPE, (DnsDomain)rr.Base.NAME });
         }
 
         public static LogMessage ResourceRecordFoundA(DnsClient.Response response, DnsClient.DNS.Records.A rr)
         {
-          return Create(String.Format(Resources.LogMessages.ResourceRecordFoundA, rr.Base.NAME, rr.ADDRESS.ToString()));
+          return Create(Resources.LogMessages.ResourceRecordFoundA, 
+            new object[] { (DnsDomain)rr.Base.NAME, rr.ADDRESS });
         }
 
         public static LogMessage ResourceRecordFoundAAAA(DnsClient.Response response, DnsClient.DNS.Records.AAAA rr)
         {
-          return Create(String.Format(Resources.LogMessages.ResourceRecordFoundAAAA, rr.Base.NAME, rr.ADDRESS.ToString()));
+          return Create(Resources.LogMessages.ResourceRecordFoundAAAA, 
+            new object[] { (DnsDomain)rr.Base.NAME, rr.ADDRESS });
         }
 
         public static LogMessage ResourceRecordFoundPTR(DnsClient.Response response, DnsClient.DNS.Records.PTR rr)
         {
-          return Create(String.Format(Resources.LogMessages.ResourceRecordFoundPTR, rr.Base.NAME, rr.PTRDNAME));
+          return Create(Resources.LogMessages.ResourceRecordFoundPTR,
+            new object[] { (DnsDomain)rr.Base.NAME, (DnsDomain)rr.PTRDNAME });
         }
 
         public static LogMessage ResourceRecordFoundNS(DnsClient.Response response, DnsClient.DNS.Records.NS rr)
         {
-          
-
-          return Create(String.Format(Resources.LogMessages.ResourceRecordFoundNS, rr.NSDNAME));
+          return Create(Resources.LogMessages.ResourceRecordFoundNS,
+            new object[] { (DnsDomain)rr.NSDNAME });
         }
 
         public static LogMessage ResolutionFinished(int count)
         {
-          return Create(String.Format(
-            Resources.LogMessages.ResolutionFinished, count));
+          return Create(Resources.LogMessages.ResolutionFinished,
+            new object[] { count });
         }
 
-        private static LogMessage Create(string message)
+        private static LogMessage Create(string message, object[] args)
         {
-          return RESPONSE.Create(LogMessageLevel.INFO, message);
+          return RESPONSE.Create(LogMessageLevel.INFO, message, args);
         }
 
       }
@@ -203,25 +196,22 @@ namespace Boethin.Net.DnsTools.Resolution.Logging
 
         public static LogMessage CNameFound(DnsDomain domain, string canonical)
         {
-          return Create(String.Format(
-            Resources.LogMessages.CNameFound, domain.ToString(), canonical));
+          return Create(Resources.LogMessages.CNameFound, new object[] { domain, canonical });
         }
 
         public static LogMessage CNameNoFollow()
         {
-          return Create(String.Format(
-            Resources.LogMessages.CNameNoFollow));
+          return Create(Resources.LogMessages.CNameNoFollow, new object[] { });
         }
 
         public static LogMessage RepeatingTruncatedAnswer()
         {
-          return Create(String.Format(
-            Resources.LogMessages.RepeatingTruncatedAnswer));
+          return Create(Resources.LogMessages.RepeatingTruncatedAnswer, new object[] { });
         }
 
-        private static LogMessage Create(string message)
+        private static LogMessage Create(string message, object[] args)
         {
-          return RESPONSE.Create(LogMessageLevel.WARN, message);
+          return RESPONSE.Create(LogMessageLevel.WARN, message, args);
         }
 
       }
@@ -231,64 +221,56 @@ namespace Boethin.Net.DnsTools.Resolution.Logging
 
         public static LogMessage MissingRecords(DnsClient.DNS.QTYPE question)
         {
-          return Create(String.Format(
-            Resources.LogMessages.MissingRecords, question.ToString()));
+          return Create(Resources.LogMessages.MissingRecords, new object[] { question });
         }
 
         public static LogMessage NameNotExisting(DnsDomain domain)
         {
-          return Create(String.Format(
-            Resources.LogMessages.NameNotExisting, domain));
+          return Create(Resources.LogMessages.NameNotExisting, new object[] { domain });
         }
 
         public static LogMessage QueryNotImplemented(DnsClient.DNS.QTYPE question)
         {
-          return Create(String.Format(
-            Resources.LogMessages.QueryNotImplemented, question.ToString()));
+          return Create(Resources.LogMessages.QueryNotImplemented, new object[] { question });
         }
 
         public static LogMessage ServerRefused()
         {
-          return Create(String.Format(
-            Resources.LogMessages.ServerRefused));
+          return Create(Resources.LogMessages.ServerRefused, new object[] { });
         }
 
         public static LogMessage ServerFailure()
         {
-          return Create(String.Format(
-            Resources.LogMessages.ServerFailure));
+          return Create(Resources.LogMessages.ServerFailure, new object[] { });
         }
 
         public static LogMessage UnexpectedRCode(int rcodeValue, DnsClient.DNS.RCODE rcode)
         {
-          return Create(String.Format(
-            Resources.LogMessages.UnexpectedRCode, rcodeValue, rcode.ToString()));
+          return Create(Resources.LogMessages.UnexpectedRCode, new object[] { rcodeValue, rcode });
         }
 
         public static LogMessage NegativeResponse(QueryState queryState)
         {
-          return Create(String.Format(
-            Resources.LogMessages.NegativeResponse, queryState.ToString()));
+          return Create(Resources.LogMessages.NegativeResponse, new object[] { queryState });
         }
 
         public static LogMessage ResponseInvalid(QueryState queryState)
         {
-          return Create(String.Format(
-            Resources.LogMessages.ResponseInvalid, queryState.ToString()));
+          return Create(Resources.LogMessages.ResponseInvalid, new object[] { queryState });
         }
 
-        private static LogMessage Create(string message)
+        private static LogMessage Create(string message, object[] args)
         {
-          return RESPONSE.Create(LogMessageLevel.ERROR, message);
+          return RESPONSE.Create(LogMessageLevel.ERROR, message, args);
         }
-        
+
       }
 
-      private static LogMessage Create(LogMessageLevel level, string message)
+      private static LogMessage Create(LogMessageLevel level, string message, object[] args)
       {
-        return new LogMessage(LogMessageState.RESPONSE, level, message);
+        return new LogMessage(LogMessageState.RESPONSE, level, message, args);
       }
-      
+
       #region composed LogMessages
 
       public static LogMessage ResolutionSucceded(
@@ -340,7 +322,7 @@ namespace Boethin.Net.DnsTools.Resolution.Logging
       #endregion
 
     }
-       
+
 
 
   }
