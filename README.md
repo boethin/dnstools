@@ -1,4 +1,4 @@
-DNS resolver rlibrary.
+DNS resolver library.
 ==============================================
 
 The C# library includes tools for querying DNS servers and resolving DNS queries via UDP and TCP using IPv4 and IPv6.
