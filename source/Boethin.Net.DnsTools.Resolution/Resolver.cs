@@ -234,12 +234,7 @@ namespace Boethin.Net.DnsTools.Resolution
       //IPAddress address = server.GetFirstAddress(_Options.IPVersion);
 
       ushort id = (ushort)new Random(DateTime.Now.Millisecond).Next(0, ushort.MaxValue);
-      request = new Request(id, false, OPCODE.QUERY, new Question
-      {
-        QCLASS = QCLASS.IN,
-        QTYPE = qtype,
-        QNAME = _Domain.ToString()
-      });
+      request = new Request(id, false, OPCODE.QUERY, new Question(_Domain.ToString(), qtype));
 
       try
       {

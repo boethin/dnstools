@@ -36,13 +36,13 @@ namespace Boethin.Net.DnsTools.DnsClient.Logging
 
     public readonly string MessageFormat;
 
-    public readonly object[] MessageArgs;
+    public readonly object[] MessageFormatArgs;
 
     public string Message
     {
       get
       {
-        return String.Format(MessageFormat, MessageArgs);
+        return String.Format(MessageFormat, MessageFormatArgs);
       }
     }
 
@@ -55,7 +55,7 @@ namespace Boethin.Net.DnsTools.DnsClient.Logging
       this.State = state;
       this.Level = level;
       this.MessageFormat = message;
-      this.MessageArgs = args;
+      this.MessageFormatArgs = args;
     }
 
     #endregion

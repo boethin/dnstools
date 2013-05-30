@@ -52,12 +52,39 @@ namespace Boethin.Net.DnsTools.DnsClient
 
     #region c'tor
 
+    /// <summary>
+    /// Create a new DNS request.
+    /// </summary>
+    /// <param name="id">A 16 bit identifier assigned by the program that generates any kind of query.</param>
+    /// <param name="rd">Recursion Desired - If RD is set, it directs the name server to pursue the query recursively.</param>
+    /// <param name="opcode">A four bit field that specifies kind of query in this message.</param>
+    /// <param name="question"></param>
     public Request(ushort id, bool rd, DNS.OPCODE opcode, DNS.Question question)
     {
+      if (Object.ReferenceEquals(null, question))
+        throw new ArgumentNullException("question");
+
       Header.ID = id;
       Header.QR = DNS.QR.Q;
       Header.RD = rd;
       Header.OPCODE = opcode;
+      Questions.Add(question);
+    }
+
+    /// <summary>
+    /// Create a new QUERY DNS request.
+    /// </summary>
+    /// <param name="rd">Recursion Desired - If RD is set, it directs the name server to pursue the query recursively.</param>
+    /// <param name="question">The DNS question.</param>
+    public Request(bool rd, DNS.Question question)
+    {
+      if (Object.ReferenceEquals(null, question))
+        throw new ArgumentNullException("question");
+
+      Header.ID = (ushort)System.DateTime.Now.Ticks;
+      Header.QR = DNS.QR.Q;
+      Header.RD = rd;
+      Header.OPCODE = DNS.OPCODE.QUERY;
       Questions.Add(question);
     }
 

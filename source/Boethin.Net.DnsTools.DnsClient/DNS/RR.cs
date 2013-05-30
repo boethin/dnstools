@@ -20,11 +20,7 @@
  */
 
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Reflection;
-using System.Threading;
 
 namespace Boethin.Net.DnsTools.DnsClient.DNS
 {

@@ -76,13 +76,24 @@ namespace Boethin.Net.DnsTools.DnsClient
       get { return base.Connected; }
     }
 
+    void IDnsClient.Connect(string address)
+    {
+      if (String.IsNullOrEmpty(address))
+        throw new ArgumentNullException("address", "String value cannot be null or empty.");
+      ((IDnsClient)this).Connect(IPAddress.Parse(address));
+    }
+
     void IDnsClient.Connect(IPAddress address)
     {
+      if (Object.ReferenceEquals(null, address))
+        throw new ArgumentNullException("address");
       Connect(new IPEndPoint(address, DefaultPort));
     }
 
     void IDnsClient.Connect(IPEndPoint endpoint)
     {
+      if (Object.ReferenceEquals(null, endpoint))
+        throw new ArgumentNullException("endpoint");
       base.Connect(endpoint);
     }
 

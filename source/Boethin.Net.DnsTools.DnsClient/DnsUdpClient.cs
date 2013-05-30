@@ -96,13 +96,28 @@ namespace Boethin.Net.DnsTools.DnsClient
     /// Assign an IP address with the client using the default name server port 53.
     /// </summary>
     /// <param name="address"></param>
+    void IDnsClient.Connect(string address)
+    {
+      if (String.IsNullOrEmpty(address))
+        throw new ArgumentNullException("address", "String value cannot be null or empty.");
+      ((IDnsClient)this).Connect(IPAddress.Parse(address));
+    }
+
+    /// <summary>
+    /// Assign an IP address with the client using the default name server port 53.
+    /// </summary>
+    /// <param name="address"></param>
     void IDnsClient.Connect(IPAddress address)
     {
-      ((IDnsClient)this).Connect(new IPEndPoint(address, 53));
+      if (Object.ReferenceEquals(null, address))
+        throw new ArgumentNullException("address");
+      ((IDnsClient)this).Connect(new IPEndPoint(address, DefaultPort));
     }
 
     void IDnsClient.Connect(IPEndPoint endpoint)
     {
+      if (Object.ReferenceEquals(null, endpoint))
+        throw new ArgumentNullException("endpoint");
       RemoteEP = endpoint;
     }
 

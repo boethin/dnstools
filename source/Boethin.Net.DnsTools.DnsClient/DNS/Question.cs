@@ -31,7 +31,7 @@ namespace Boethin.Net.DnsTools.DnsClient.DNS
   /// i.e., the parameters that define what is being asked.  The section
   /// contains QDCOUNT (usually 1) entries, each of the following format:
   /// </summary>
-  [Serializable] 
+  [Serializable]
   public class Question : Internal.IRequestWriter, Internal.IResponseReader
   {
 
@@ -64,6 +64,48 @@ namespace Boethin.Net.DnsTools.DnsClient.DNS
     /// a two octet code that specifies the class of the query.
     /// </summary>
     public QCLASS QCLASS { get; set; }
+
+
+    #region c'tor
+
+    /// <summary>
+    /// Initialize a new DNS question.
+    /// </summary>
+    /// <param name="qname">A domain name represented as a sequence of labels.</param>
+    /// <param name="qtype">A two octet code which specifies the type of the query.</param>
+    /// <param name="qclass">A two octet code that specifies the class of the query.</param>
+    public Question(string qname, QTYPE qtype, QCLASS qclass)
+    {
+      if (String.IsNullOrEmpty(qname))
+        throw new ArgumentNullException("qname", "Value cannot be null or empty.");
+
+      this.QNAME = qname;
+      this.QTYPE = qtype;
+      this.QCLASS = qclass;
+    }
+
+    /// <summary>
+    /// Initialize a new DNS question using QCLASS IN.
+    /// </summary>
+    /// <param name="qname">A domain name represented as a sequence of labels.</param>
+    /// <param name="qtype">A two octet code which specifies the type of the query.</param>
+    /// <param name="qclass">A two octet code that specifies the class of the query.</param>
+    public Question(string qname, QTYPE qtype)
+    {
+      if (String.IsNullOrEmpty(qname))
+        throw new ArgumentNullException("qname", "Value cannot be null or empty.");
+
+      this.QNAME = qname;
+      this.QTYPE = qtype;
+      this.QCLASS = DNS.QCLASS.IN;
+    }
+
+    internal Question()
+    { 
+    }
+    
+    #endregion
+
 
 
     #region IDataHandler

@@ -233,12 +233,11 @@ namespace Boethin.Net.DnsTools.Tests.ConsoleResolver
           (ushort)DateTime.Now.Ticks,
           checkBoxClientRD.Checked,
           (OPCODE)Enum.Parse(typeof(OPCODE), comboBoxClientOPCODE.SelectedValue.ToString()),
-          new Question
-          {
-            QNAME = textBoxClientQNAME.Text.Trim(),
-            QCLASS = (QCLASS)Enum.Parse(typeof(QCLASS), comboBoxClientQCLASS.SelectedValue.ToString()),
-            QTYPE = (QTYPE)Enum.Parse(typeof(QTYPE), comboBoxClientQTYPE.SelectedValue.ToString())
-          });
+          new Question(
+            textBoxClientQNAME.Text.Trim(),
+            (QTYPE)Enum.Parse(typeof(QTYPE), comboBoxClientQTYPE.SelectedValue.ToString()),
+            (QCLASS)Enum.Parse(typeof(QCLASS), comboBoxClientQCLASS.SelectedValue.ToString())));
+
 
         labelClientResponse.Text = String.Empty;
         textBoxClientResponse.Text = String.Empty;

@@ -37,6 +37,8 @@ namespace Boethin.Net.DnsTools.DnsClient
     
     bool Connected { get; }
 
+    void Connect(string address);
+
     void Connect(IPAddress address);
 
     void Connect(IPEndPoint endpoint);
