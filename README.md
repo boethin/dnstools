@@ -8,18 +8,19 @@ The library includes tools for querying DNS servers and iterative DNS Resolution
   - Error recovery in DNS configurations.
   - Experimental investigation of possibilities in the DNS.
   - Development of ways to optimize client implementations.
+  - Understanding DNS.
 
 ### Features:
 
   - UDP and TCP clients.
   - IPv4 and IPv6 (dual stack) support.
   - Synchronous and asynchronous request methods.
-  - An event-based logging mechanism.
-  - An interactively controllable resolution iterator.
+  - Interactively controllable resolution iterator.
+  - Event based logging.
 
 ### Sample usage
 
-##### A simple non-recursive DNS request
+##### A simple DNS request
 
 <pre>
 // using Boethin.Net.DnsTools.DnsClient;
@@ -29,11 +30,11 @@ The library includes tools for querying DNS servers and iterative DNS Resolution
 using (IDnsClient client = new DnsUdpClient())
 {
   // a.iana-servers.net. is authoritative for www.example.com.
-  client.Connect("199.43.132.53");
+  client.Connect(<b>"199.43.132.53"</b>);
 
   // Perform non-recursive DNS request
-  Response response = client.Process(
-              new Request(false, new Question("www.example.com.", QTYPE.ANY)));
+  Response response = client.Process(new Request(false, 
+    new Question(<b>"www.example.com."</b>, <b>QTYPE.ANY</b>)));
 
   // Display result
   Console.WriteLine("Request:  \"{0}\" sent to 199.43.132.53", response.Questions.First());
@@ -50,11 +51,10 @@ using (IDnsClient client = new DnsUdpClient())
 ###### Expected output:
 <pre>
 Request:  "www.example.com. IN ANY" sent to 199.43.132.53
-Answer:   "www.example.com. 172800 IN A 192.0.43.10"
-Answer:   "www.example.com. 172800 IN [46] [159 bytes]"
+Answer:   "www.example.com. 172800 IN A <b>192.0.43.10</b>"
+Answer:   "www.example.com. 172800 IN AAAA <b>2001:500:88:200::10</b>"
 Answer:   "www.example.com. 172800 IN TXT "v=spf1 -all""
 Answer:   "www.example.com. 172800 IN [46] [159 bytes]"
-Answer:   "www.example.com. 172800 IN AAAA 2001:500:88:200::10"
 </pre>
 
 The RRs denoted as *[46]* within the response are *RRSIG* RRs. Since DNSSEC is not yet implemented, these RRs are not parsed. However you can access their raw byte data through the answer RRs.
@@ -70,7 +70,7 @@ The RRs denoted as *[46]* within the response are *RRSIG* RRs. Since DNSSEC is n
 
 // Perform an iterative reverse PTR lookup for 192.0.43.10
 using (DomainResolver resolver = new DomainResolver(
-  IPAddress.Parse("192.0.43.10").GetArpaDomain())) // 10.43.0.192.in-addr.arpa
+  IPAddress.Parse(<b>"192.0.43.10"</b>).GetArpaDomain())) // 10.43.0.192.in-addr.arpa
 {
   // use UDP
   resolver.Connect(new DnsUdpClient());
@@ -106,7 +106,7 @@ Request:  "10.43.0.192.in-addr.arpa. IN PTR" sent to w.arin.net.
 Request:  "ns.icann.org. IN A" sent to m.root-servers.net.
 Request:  "ns.icann.org. IN A" sent to c0.org.afilias-nst.info.
 Request:  "10.43.0.192.in-addr.arpa. IN PTR" sent to ns.icann.org.
-Answer:   "10.43.0.192.in-addr.arpa. 21600 IN PTR 43-10.any.icann.org."
+Answer:   "<b>10.43.0.192.in-addr.arpa.</b> 21600 IN PTR <b>43-10.any.icann.org.</b>"
 </pre>
 
 The resolution process starts with a root name server and ends up with an authoritty for the name in question. During the resolution process, there are several address resolutions performed in order to get name server addresses. The final result shows, that the IP address *192.0.43.10* points to the hostname *43-10.any.icann.org*.
