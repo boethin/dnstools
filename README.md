@@ -1,4 +1,4 @@
-A DNS client library in C#
+DNS client library in C#
 ==============================================
 
 The library includes tools for querying DNS servers and iterative DNS Resolution.
