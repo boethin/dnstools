@@ -239,7 +239,7 @@ namespace Boethin.Net.DnsTools.Resolution
       try
       {
         _Client.Connect(address);
-        response = _Client.LookUp(request);
+        response = _Client.Process(request);
         if (response.Header.ID != id) // paranoid
           throw new ResolverException(
             "Did not get my request ID back. Either the name server or the client software is buggy.");

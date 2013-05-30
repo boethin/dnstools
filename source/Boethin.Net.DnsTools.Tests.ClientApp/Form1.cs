@@ -243,7 +243,7 @@ namespace Boethin.Net.DnsTools.Tests.ConsoleResolver
         textBoxClientResponse.Text = String.Empty;
 
         client.Connect(serverAddr);
-        client.BeginLookUp(request, new AsyncCallback(OnClientResponseReceived),
+        client.BeginProcess(request, new AsyncCallback(OnClientResponseReceived),
           new ClientAsyncState { Client = client, Request = request, Server = serverAddr });
 
         //try
@@ -299,7 +299,7 @@ namespace Boethin.Net.DnsTools.Tests.ConsoleResolver
       try
       {
         ClientAsyncState state = (ClientAsyncState)asyncResult.AsyncState;
-        Response response = state.Client.EndLookUp(asyncResult);
+        Response response = state.Client.EndProcess(asyncResult);
         SetText(labelClientResponse, ShortResponseInfo(state, response));
 
         StringBuilder result = new StringBuilder();

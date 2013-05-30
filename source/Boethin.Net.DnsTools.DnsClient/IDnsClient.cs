@@ -27,12 +27,10 @@ namespace Boethin.Net.DnsTools.DnsClient
   public interface IDnsClient : IDisposable
   {
 
-    //event MessageEventHandler RequestSending;
-
-    //event MessageEventHandler ResponseReceived;
-
+    // Logging
     event Logging.LogMessageEventHandler LogMessageCreated;
 
+    // UDP or TCP
     NetworkProtocol NetworkProtocol { get; }
     
     bool Connected { get; }
@@ -45,11 +43,11 @@ namespace Boethin.Net.DnsTools.DnsClient
 
     void Close();
 
-    Response LookUp(Request request);
+    Response Process(Request request);
 
-    IAsyncResult BeginLookUp(Request request, AsyncCallback callback, object state);
+    IAsyncResult BeginProcess(Request request, AsyncCallback callback, object state);
 
-    Response EndLookUp(IAsyncResult asyncResult);
+    Response EndProcess(IAsyncResult asyncResult);
 
   }
 }

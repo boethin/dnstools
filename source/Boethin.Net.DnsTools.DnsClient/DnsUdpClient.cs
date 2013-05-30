@@ -126,7 +126,7 @@ namespace Boethin.Net.DnsTools.DnsClient
       RemoteEP = null;
     }
 
-    Response IDnsClient.LookUp(Request request)
+    Response IDnsClient.Process(Request request)
     {
       if (object.ReferenceEquals(null, request))
         throw new ArgumentNullException("request");
@@ -134,8 +134,6 @@ namespace Boethin.Net.DnsTools.DnsClient
       if (!((IDnsClient)this).Connected)
         throw new InvalidOperationException(
           "The operation requires an IP address assigned with the client (use the Connect method).");
-
-
 
       // send request
       Datagram qdata = request.Data;
@@ -162,7 +160,7 @@ namespace Boethin.Net.DnsTools.DnsClient
       return response;
     }
 
-    IAsyncResult IDnsClient.BeginLookUp(Request request, AsyncCallback callback, object state)
+    IAsyncResult IDnsClient.BeginProcess(Request request, AsyncCallback callback, object state)
     {
       Internal.AsyncResult<Response> result = new Internal.AsyncResult<Response>(callback, state);
 
@@ -181,7 +179,7 @@ namespace Boethin.Net.DnsTools.DnsClient
       return result;
     }
 
-    Response IDnsClient.EndLookUp(IAsyncResult asyncResult)
+    Response IDnsClient.EndProcess(IAsyncResult asyncResult)
     {
       return ((Internal.AsyncResult<Response>)asyncResult).EndInvoke();
     }

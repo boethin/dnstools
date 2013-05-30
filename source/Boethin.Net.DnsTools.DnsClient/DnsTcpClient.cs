@@ -102,7 +102,7 @@ namespace Boethin.Net.DnsTools.DnsClient
       base.Close();
     }
 
-    Response IDnsClient.LookUp(Request request)
+    Response IDnsClient.Process(Request request)
     {
       if (object.ReferenceEquals(null, request))
         throw new ArgumentNullException("request");
@@ -133,7 +133,7 @@ namespace Boethin.Net.DnsTools.DnsClient
       return response;
     }
 
-    IAsyncResult IDnsClient.BeginLookUp(Request request, AsyncCallback callback, object state)
+    IAsyncResult IDnsClient.BeginProcess(Request request, AsyncCallback callback, object state)
     {
       if (object.ReferenceEquals(null, request))
         throw new ArgumentNullException("request");
@@ -158,7 +158,7 @@ namespace Boethin.Net.DnsTools.DnsClient
       return result;
     }
 
-    Response IDnsClient.EndLookUp(IAsyncResult asyncResult)
+    Response IDnsClient.EndProcess(IAsyncResult asyncResult)
     {
       return ((Internal.AsyncResult<Response>)asyncResult).EndInvoke();
     }
