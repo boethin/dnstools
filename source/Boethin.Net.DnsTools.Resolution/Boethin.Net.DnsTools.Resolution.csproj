@@ -85,7 +85,7 @@
     <Compile Include="ResolverException.cs" />
     <Compile Include="RootServers.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Resolver.cs" />
+    <Compile Include="DomainResolver.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Logging\Resources\LogMessages.resx">

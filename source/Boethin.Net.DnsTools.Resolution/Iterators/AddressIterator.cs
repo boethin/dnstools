@@ -33,7 +33,7 @@ namespace Boethin.Net.DnsTools.Resolution.Iterators
   {
 
     internal AddressIterator(ResolutionIterator iterator, DnsDomain domain, IPVersion ipVersion)
-      : base(new Resolver(iterator.Resolver.Options, domain),
+      : base(new DomainResolver(iterator.Resolver.Options, domain),
       GetAddressQuestion(ipVersion), iterator.AddressCache, iterator.NestingLevel + 1)
     {
     }

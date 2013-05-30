@@ -35,10 +35,8 @@ namespace Boethin.Net.DnsTools.Resolution
   /// An iterative name resolver.
   /// </summary>
   [Serializable]
-  public class Resolver
+  public class DomainResolver : IDisposable
   {
-
-    // http://tools.ietf.org/html/rfc1034
 
     #region private
 
@@ -56,8 +54,6 @@ namespace Boethin.Net.DnsTools.Resolution
     #region internal
 
     #endregion
-
-    //public event NameServerEventHandler LookUpProcessing;
 
     #region public get
 
@@ -96,7 +92,12 @@ namespace Boethin.Net.DnsTools.Resolution
 
     #region c'tor
 
-    public Resolver(Options options, DnsDomain domain)
+    /// <summary>
+    /// Initialize a new instance of the Resolver class.
+    /// </summary>
+    /// <param name="options">Resolution options</param>
+    /// <param name="domain">The domain in question</param>
+    public DomainResolver(Options options, DnsDomain domain)
     {
       if (object.ReferenceEquals(null, options))
         throw new ArgumentNullException("options");
@@ -107,10 +108,66 @@ namespace Boethin.Net.DnsTools.Resolution
       _Domain = domain;
     }
 
-    internal Resolver(Resolver resolver, DnsDomain domain)
+    /// <summary>
+    /// Initialize a new instance of the Resolver class.
+    /// </summary>
+    /// <param name="options">Resolution options</param>
+    /// <param name="domain">The domain in question</param>
+    public DomainResolver(Options options, string domain)
+    {
+      if (object.ReferenceEquals(null, options))
+        throw new ArgumentNullException("options");
+      if (String.IsNullOrEmpty(domain))
+        throw new ArgumentNullException("domain", "String value cannot be null or empty.");
+
+      _Options = options;
+      _Domain = (DnsDomain)domain;
+    }
+
+    /// <summary>
+    /// Initialize a new instance of the Resolver class using default options.
+    /// </summary>
+    /// <param name="domain">The domain in question</param>
+    public DomainResolver(DnsDomain domain)
+    {
+      if (object.ReferenceEquals(null, domain))
+        throw new ArgumentNullException("domain");
+
+      _Options = Options.Default;
+      _Domain = domain;
+    }
+
+    /// <summary>
+    /// Initialize a new instance of the Resolver class using default options.
+    /// </summary>
+    /// <param name="domain">The domain in question</param>
+    public DomainResolver(string domain)
+    {
+      if (String.IsNullOrEmpty(domain))
+        throw new ArgumentNullException("domain", "String value cannot be null or empty.");
+
+      _Options = Options.Default;
+      _Domain = (DnsDomain)domain;
+    }
+
+
+    internal DomainResolver(DomainResolver resolver, DnsDomain domain)
     {
       _Options = resolver.Options;
       _Domain = domain;
+    }
+
+    #endregion
+
+    #region IDisposable
+
+    public virtual void Dispose()
+    {
+      if (!Object.ReferenceEquals(null, _Client))
+      {
+        _Client.Dispose();
+        _Client = null;
+      }
     }
 
     #endregion

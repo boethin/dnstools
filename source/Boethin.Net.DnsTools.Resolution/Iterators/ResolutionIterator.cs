@@ -60,14 +60,14 @@ namespace Boethin.Net.DnsTools.Resolution.Iterators
 
     #region c'tor
 
-    internal ResolutionIterator(Resolver resolver, DnsClient.DNS.QTYPE question, Caching.AddressCache addressCache)
+    internal ResolutionIterator(DomainResolver resolver, DnsClient.DNS.QTYPE question, Caching.AddressCache addressCache)
       : base(resolver, question, addressCache)
     {
       NestingLevel = 0;
     }
 
     // sub iterators: Address / CName
-    protected ResolutionIterator(Resolver resolver, DnsClient.DNS.QTYPE question, Caching.AddressCache addressCache, int nestingLevel)
+    protected ResolutionIterator(DomainResolver resolver, DnsClient.DNS.QTYPE question, Caching.AddressCache addressCache, int nestingLevel)
       : base(resolver, question, addressCache)
     {
       this.NestingLevel = nestingLevel;

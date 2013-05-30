@@ -32,7 +32,7 @@ namespace Boethin.Net.DnsTools.Resolution.Iterators
   {
 
     internal CNameIterator(ResolutionIterator iterator, DnsDomain domain)
-      : base(new Resolver(iterator.Resolver.Options, domain), 
+      : base(new DomainResolver(iterator.Resolver.Options, domain), 
       iterator.Question, iterator.AddressCache, iterator.NestingLevel + 1)
     {
     }

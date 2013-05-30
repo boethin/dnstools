@@ -33,7 +33,7 @@ namespace Boethin.Net.DnsTools.Resolution.Iterators
 
     #region private
 
-    private readonly Resolver _Resolver;
+    private readonly DomainResolver _Resolver;
 
     private readonly DnsClient.DNS.QTYPE _Question;
 
@@ -73,7 +73,7 @@ namespace Boethin.Net.DnsTools.Resolution.Iterators
       get { return _Question; }
     }
 
-    public Resolver Resolver
+    public DomainResolver Resolver
     {
       get { return _Resolver; }
     }
@@ -94,7 +94,7 @@ namespace Boethin.Net.DnsTools.Resolution.Iterators
 
     #region c'tor
 
-    internal ResolutionIteratorBase(Resolver resolver, DnsClient.DNS.QTYPE question, Caching.AddressCache addressCache)
+    internal ResolutionIteratorBase(DomainResolver resolver, DnsClient.DNS.QTYPE question, Caching.AddressCache addressCache)
     {
       _Resolver = resolver;
       _Question = question;

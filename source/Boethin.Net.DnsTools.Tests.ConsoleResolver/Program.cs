@@ -155,7 +155,7 @@ namespace Boethin.Net.DnsTools.Tests.ConsoleResolver
 
             Console.WriteLine("OK: {0} IN {1}", domain, question.ToString());
 
-            Resolver resolver = new Resolver(Options.Default, domain);
+            DomainResolver resolver = new DomainResolver(Options.Default, domain);
             ResolutionIterator iterator = resolver.GetIterator(question);
             iterator.LogMessageCreated += new LogMessageEventHandler(OnLogMessage);
 
