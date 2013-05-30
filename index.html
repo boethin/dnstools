@@ -28,17 +28,187 @@
         </ul>
       </header>
       <section>
-        <h1>A DNS debugging library.</h1>
+        <h1>
+<a name="a-dns-client-library-in-c" class="anchor" href="#a-dns-client-library-in-c"><span class="octicon octicon-link"></span></a>A DNS client library in C#</h1>
 
-<p>The C# library includes tools for querying DNS servers and resolving DNS queries via UDP and TCP using IPv4 and IPv6.</p>
+<p>The library includes tools for querying DNS servers and iterative DNS Resolution.</p>
 
-<h3>The goals of the project</h3>
+<h3>
+<a name="the-goals-of-the-project" class="anchor" href="#the-goals-of-the-project"><span class="octicon octicon-link"></span></a>The goals of the project</h3>
 
 <ul>
 <li>Error recovery in DNS configurations.</li>
 <li>Experimental investigation of possibilities in the DNS.</li>
 <li>Development of ways to optimize client implementations.</li>
-</ul><h3>The following specifications have been taken into consideration:</h3>
+</ul><h3>
+<a name="features" class="anchor" href="#features"><span class="octicon octicon-link"></span></a>Features:</h3>
+
+<ul>
+<li>UDP and TCP clients.</li>
+<li>IPv4 and IPv6 (dual stack) support.</li>
+<li>Synchronous and asynchronous request methods.</li>
+<li>An event-based logging mechanism.</li>
+<li>An interactively controllable resolution iterator.</li>
+</ul><h3>
+<a name="sample-usage" class="anchor" href="#sample-usage"><span class="octicon octicon-link"></span></a>Sample usage</h3>
+
+<h5>
+<a name="a-simple-non-recursive-dns-request" class="anchor" href="#a-simple-non-recursive-dns-request"><span class="octicon octicon-link"></span></a>A simple non-recursive DNS request</h5>
+
+<pre>
+// using Boethin.Net.DnsTools.DnsClient;
+// using Boethin.Net.DnsTools.DnsClient.DNS;
+
+// Get all RRs of www.example.com
+using (IDnsClient client = new DnsUdpClient())
+{
+  // a.iana-servers.net. is authoritative for www.example.com.
+  client.Connect("199.43.132.53");
+
+  // Perform non-recursive DNS request
+  Response response = client.Process(
+              new Request(false, new Question("www.example.com.", QTYPE.ANY)));
+
+  // Display result
+  Console.WriteLine("Request:  \"{0}\" sent to 199.43.132.53", response.Questions.First());
+  if (response.Header.RCODE == RCODE.NoError) // response OK
+  {
+    foreach (RR rr in response.AnswerRecords)
+      Console.WriteLine("Answer:   \"{0}\"", rr);
+  }
+  else // error
+    Console.WriteLine("Unexpected RCODE: {0}", response.Header.RCODE.ToString());
+}
+</pre>
+
+<h6>
+<a name="expected-output" class="anchor" href="#expected-output"><span class="octicon octicon-link"></span></a>Expected output:</h6>
+
+<pre>
+Request:  "www.example.com. IN ANY" sent to 199.43.132.53
+Answer:   "www.example.com. 172800 IN A 192.0.43.10"
+Answer:   "www.example.com. 172800 IN [46] [159 bytes]"
+Answer:   "www.example.com. 172800 IN TXT "v=spf1 -all""
+Answer:   "www.example.com. 172800 IN [46] [159 bytes]"
+Answer:   "www.example.com. 172800 IN AAAA 2001:500:88:200::10"
+</pre>
+
+<p>The RRs denoted as <em>[46]</em> within the response are <em>RRSIG</em> RRs. Since DNSSEC is not yet implemented, these RRs are not parsed. However you can access their raw byte data through the answer RRs.</p>
+
+<h5>
+<a name="an-iterative-reverse-dns-lookup" class="anchor" href="#an-iterative-reverse-dns-lookup"><span class="octicon octicon-link"></span></a>An iterative reverse DNS lookup</h5>
+
+<pre>
+// using Boethin.Net.DnsTools.DnsClient;
+// using Boethin.Net.DnsTools.DnsClient.DNS;
+// using Boethin.Net.DnsTools.Resolution;
+// using Boethin.Net.DnsTools.Resolution.Iterators;
+// using Boethin.Net.DnsTools.Resolution.Extensions;
+
+// Perform an iterative reverse PTR lookup for 192.0.43.10
+using (DomainResolver resolver = new DomainResolver(
+  IPAddress.Parse("192.0.43.10").GetArpaDomain())) // 10.43.0.192.in-addr.arpa
+{
+  // use UDP
+  resolver.Connect(new DnsUdpClient());
+  using (ResolutionIterator iterator = resolver.GetIterator(QTYPE.PTR))
+  {
+    while (iterator.MoveNext())
+    {
+      Console.WriteLine("Request:  \"{0}\" sent to {1}",
+        iterator.Current.Request.Questions.First(),
+        iterator.Current.Authorities.Selected.Name);
+    }
+
+    // Display result
+    if (iterator.Current.Response.Header.RCODE == RCODE.NoError) // response OK
+    {
+      foreach (RR rr in iterator.Current.Response.AnswerRecords)
+        Console.WriteLine("Answer:   \"{0}\"", rr);
+    }
+    else // error
+      Console.WriteLine("Unexpected RCODE: {0}", iterator.Current.Response.Header.RCODE.ToString());
+  }
+}
+</pre>
+
+<h6>
+<a name="expected-output-1" class="anchor" href="#expected-output-1"><span class="octicon octicon-link"></span></a>Expected output:</h6>
+
+<pre>
+Request:  "10.43.0.192.in-addr.arpa. IN PTR" sent to k.root-servers.net.
+Request:  "10.43.0.192.in-addr.arpa. IN PTR" sent to a.in-addr-servers.arpa.
+Request:  "w.arin.net. IN A" sent to j.root-servers.net.
+Request:  "w.arin.net. IN A" sent to g.gtld-servers.net.
+Request:  "w.arin.net. IN A" sent to ns2.arin.net.
+Request:  "10.43.0.192.in-addr.arpa. IN PTR" sent to w.arin.net.
+Request:  "ns.icann.org. IN A" sent to m.root-servers.net.
+Request:  "ns.icann.org. IN A" sent to c0.org.afilias-nst.info.
+Request:  "10.43.0.192.in-addr.arpa. IN PTR" sent to ns.icann.org.
+Answer:   "10.43.0.192.in-addr.arpa. 21600 IN PTR 43-10.any.icann.org."
+</pre>
+
+<p>The resolution process starts with a root name server and ends up with an authoritty for the name in question. During the resolution process, there are several address resolutions performed in order to get name server addresses. The final result shows, that the IP address <em>192.0.43.10</em> points to the hostname <em>43-10.any.icann.org</em>.</p>
+
+<h3>
+<a name="future-plans" class="anchor" href="#future-plans"><span class="octicon octicon-link"></span></a>Future plans:</h3>
+
+<ul>
+<li>Implementation of EDNS <a href="http://tools.ietf.org/html/rfc2671">RFC 2671</a>.</li>
+<li>Validation DNSSEC zones.</li>
+<li>Improving of caching mechanisms.</li>
+<li>Utilizing the resolver for consistency and existence tests.</li>
+</ul><h2>
+<a name="project-structure" class="anchor" href="#project-structure"><span class="octicon octicon-link"></span></a>Project structure</h2>
+
+<h3>
+<a name="core-projects" class="anchor" href="#core-projects"><span class="octicon octicon-link"></span></a>Core projects</h3>
+
+<h5>
+<a name="boethinnetdnstoolsdnsclient" class="anchor" href="#boethinnetdnstoolsdnsclient"><span class="octicon octicon-link"></span></a><em>Boethin.Net.DnsTools.DnsClient</em>
+</h5>
+
+<p>This project contains a DNS client interface <em>IDnsClient</em> and a mapping of DNS data to a serializable class structure. The interface is implemented by two classes:</p>
+
+<ul>
+<li>
+<em>DnsUdpClient</em>: A UDP client, extending <a href="http://msdn.microsoft.com/en-us/library/system.net.sockets.udpclient%28v=vs.90%29.aspx"><em>System.Net.Sockets.UdpClient</em></a>.</li>
+<li>
+<em>DnsTcpClient</em>: A TCP client, extending <a href="http://msdn.microsoft.com/en-us/library/system.net.sockets.tcpclient%28v=vs.90%29.aspx"><em>System.Net.Sockets.TcpClient</em></a>.</li>
+</ul><p>The client classes are implemented as extensions of the standard network clients provided by the .NET framework. This way the greatest possible flexibility is ensured with minimal implementation effort.</p>
+
+<h5>
+<a name="boethinnetdnstoolsresolution" class="anchor" href="#boethinnetdnstoolsresolution"><span class="octicon octicon-link"></span></a><em>Boethin.Net.DnsTools.Resolution</em>
+</h5>
+
+<p>This project depends on the <em>DnsClient</em> project and contains an interactively controllable DNS resolver.</p>
+
+<p>The resolver is serializable such that it's state can be saved after each iteration step. This way it's possible to implement an iterative step-by-step resolution (within a web application for example).</p>
+
+<p>The mapping of IP addresses to ARPA domains for reverse resolution is implemeted by way of an extension of the <em>System.Net.IPAddress</em> class.</p>
+
+<h3>
+<a name="additional-testing-projects" class="anchor" href="#additional-testing-projects"><span class="octicon octicon-link"></span></a>Additional testing projects</h3>
+
+<h5>
+<a name="boethinnetdnstoolstestsclientapp" class="anchor" href="#boethinnetdnstoolstestsclientapp"><span class="octicon octicon-link"></span></a><em>Boethin.Net.DnsTools.Tests.ClientApp</em>
+</h5>
+
+<p>A WinForm application utilizing the DNS client.</p>
+
+<h5>
+<a name="boethinnetdnstoolstestsconsoleresolver" class="anchor" href="#boethinnetdnstoolstestsconsoleresolver"><span class="octicon octicon-link"></span></a><em>Boethin.Net.DnsTools.Tests.ConsoleResolver</em>
+</h5>
+
+<p>An interactive console application providing iterative name resolution.</p>
+
+<p>(Open <em>Boethin.Net.DnsTools.Tests.sln</em> for accessing the test projects.)</p>
+
+<h2>
+<a name="remarks" class="anchor" href="#remarks"><span class="octicon octicon-link"></span></a>Remarks</h2>
+
+<h5>
+<a name="the-following-specifications-have-been-taken-into-consideration" class="anchor" href="#the-following-specifications-have-been-taken-into-consideration"><span class="octicon octicon-link"></span></a>The following specifications have been taken into consideration:</h5>
 
 <ul>
 <li>
@@ -57,58 +227,16 @@
 <a href="http://tools.ietf.org/html/rfc3403">RFC 3403</a> Dynamic Delegation Discovery System (NAPTR RRs).</li>
 <li>
 <a href="http://tools.ietf.org/html/rfc4408">RFC 4408</a> Sender Policy Framework (SPF RRs).</li>
-</ul><h3>Future plans:</h3>
-
-<ul>
-<li>Implementation of EDNS <a href="http://tools.ietf.org/html/rfc2671">RFC 2671</a>.</li>
-<li>Validation DNSSEC zones.</li>
-<li>Improving of caching mechanisms.</li>
-<li>Utilizing the resolver for consistency and existence tests.</li>
-</ul><h2>Project structure</h2>
-
-<h3>Core projects</h3>
-
-<h5><em>Boethin.Net.DnsTools.DnsClient</em></h5>
-
-<p>This project contains a DNS client interface <em>IDnsClient</em> and a mapping of DNS data to a serializable class structure. The interface is implemented by two classes:</p>
-
-<ul>
-<li>
-<em>DnsUdpClient</em>: A UDP client, extending <em>System.Net.Sockets.UdpClient</em>.</li>
-<li>
-<em>DnsTcpClient</em>: A TCP client, extending <em>System.Net.Sockets.TcpClient</em>.</li>
-</ul><p>The client classes are implemented as extensions of the standard network clients provided by the .NET framework. This way the greatest possible flexibility is ensured with minimal implementation effort.</p>
-
-<h5><em>Boethin.Net.DnsTools.Resolution</em></h5>
-
-<p>This project depends on the <em>DnsClient</em> project and contains an interactively controllable DNS resolver.</p>
-
-<p>The resolver is serializable such that it's state can be saved after each iteration step. This way it's possible to implement an iterative step-by-step resolution (within a web application for example).</p>
-
-<p>The mapping of IP addresses to ARPA domains for reverse resolution is implemeted by way of an extension of the <em>System.Net.IPAddress</em> class.</p>
-
-<h3>Additional testing projects</h3>
-
-<h5><em>Boethin.Net.DnsTools.Tests.ClientApp</em></h5>
-
-<p>A WinForm application utilizing the DNS client.</p>
-
-<h5><em>Boethin.Net.DnsTools.Tests.ConsoleResolver</em></h5>
-
-<p>An interactive console application providing iterative name resolution.</p>
-
-<p>(Open <em>Boethin.Net.DnsTools.Tests.sln</em> for accessing the test projects.)</p>
-
-<h2>Remarks</h2>
-
-<h5>External dependencies</h5>
+</ul><h5>
+<a name="external-dependencies" class="anchor" href="#external-dependencies"><span class="octicon octicon-link"></span></a>External dependencies</h5>
 
 <p>The resolver library contains a mirror of the IANA Root Hints File wich needs to be synchronized.</p>
 
 <ul>
 <li>Source: <a href="http://www.iana.org/domains/root/servers">http://www.iana.org/domains/root/servers</a>
 </li>
-</ul><h5>Compatibility considerations</h5>
+</ul><h5>
+<a name="compatibility-considerations" class="anchor" href="#compatibility-considerations"><span class="octicon octicon-link"></span></a>Compatibility considerations</h5>
 
 <ul>
 <li>The library is implemented in .NET 3.5. Both Visual Studio solutions (Boethin.Net.DnsTools.sln and Boethin.Net.DnsTools.Tests.sln) can be opened with Visual studio 2010 express.</li>
