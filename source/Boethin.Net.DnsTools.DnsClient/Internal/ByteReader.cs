@@ -20,31 +20,42 @@
  */
 
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.IO;
+using System.Text;
 
 namespace Boethin.Net.DnsTools.DnsClient.Internal
 {
-  internal class ByteReader
+  internal sealed class ByteReader
   {
+
+    #region const
 
     private const ushort CompressionFlags = 0xC0; // 1100 0000
 
     private const ushort OffsetMask = 0x3F; // 0011 1111
 
-    private readonly Stream _Message;
+    #endregion
 
+    #region private
+    
+    private readonly Stream Message;
+
+    #endregion
+
+    #region c'tor
 
     public ByteReader(Stream message)
     {
-      _Message = message;
+      Message = message;
     }
+
+    #endregion
+
+    #region public
 
     public byte ReadByte()
     {
-      return (byte)_Message.ReadByte();
+      return (byte)Message.ReadByte();
     }
 
     public char ReadChar()
@@ -55,7 +66,7 @@ namespace Boethin.Net.DnsTools.DnsClient.Internal
     public Datagram ReadBytes(int count)
     {
       Datagram result = new Datagram(count);
-      if (_Message.Read(result, 0, count) < count)
+      if (Message.Read(result, 0, count) < count)
         throw new InvalidOperationException("Stream ended unexpectedly.");
       return result;
     }
@@ -64,7 +75,7 @@ namespace Boethin.Net.DnsTools.DnsClient.Internal
     {
       //byte hi = ReadByte(), lo = ReadByte();
       //return (ushort)(hi << 8 | lo);
-      return ReadUIn16(_Message);
+      return ReadUIn16(Message);
     }
 
     public TUInt16 ReadUIn16Enum<TUInt16>()
@@ -82,42 +93,6 @@ namespace Boethin.Net.DnsTools.DnsClient.Internal
       return (uint)(hi << 16 | lo);
     }
 
-    //public void ReadResponseFlags(DNS.Header header)
-    //{
-    //  ushort flags = ReadUIn16();
-
-    //  int qr = flags & 0x8000;       // 1000000000000000
-    //  if (qr == 0)
-    //    throw new InvalidOperationException(
-    //      "Zero QR flag in response header.");
-    //  header.QR = DNS.QR.R;
-
-    //  int opcode = (flags & 0x7800) >> 10;   //  111100000000000
-    //  if (!Enum.IsDefined(typeof(DNS.OPCODE), (byte)opcode))
-    //    throw new InvalidOperationException(String.Format(
-    //      "Unexpected OPCODE {0} within response header.", opcode));
-    //  header.OPCODE = (DNS.OPCODE)opcode;
-
-    //  int aa = flags & 0x400;                //      10000000000
-    //  header.AA = (aa != 0);
-
-    //  int tc = flags & 0x200;         //       1000000000
-    //  header.TC = (tc != 0);
-
-    //  int rd = flags & 0x100;         //        100000000
-    //  header.RD = (rd != 0);
-
-    //  int ra = flags & 0x80;         //         10000000
-    //  header.RA = (ra != 0);
-
-    //  int rcode = flags & 0xF;      //             1111
-    //  if (rcode > (int)DNS.RCODE.Other)
-    //    rcode = (int)DNS.RCODE.Other;
-    //  header.RCODE = (DNS.RCODE)rcode;
-    //  header.RCODEValue = (byte)rcode;
-
-    //}
-
     public Datagram ReadCharacterString()
     {
       // <character-string> is a single length octet followed by that number of characters.
@@ -128,24 +103,6 @@ namespace Boethin.Net.DnsTools.DnsClient.Internal
         return ReadBytes(length);
       return Datagram.Empty;
     }
-
-    private string ReadAscii(int length)
-    {
-      return Encoding.ASCII.GetString(ReadBytes(length));
-      //byte[] buf = new byte[length];
-      //_Message.Read(buf, 0, length);
-      //return Encoding.ASCII.GetString(buf);
-    }
-
-    //public Datagram ReadString()
-    //{
-    //  byte length = ReadByte();
-    //  if (length > 0)
-    //  {
-    //    return ReadBytes(length);
-    //  }
-    //  return new Datagram();
-    //}
 
     public string ReadDomain()
     {
@@ -174,23 +131,23 @@ namespace Boethin.Net.DnsTools.DnsClient.Internal
           long offset = (long)((length & OffsetMask) << 8 | ReadByte());
 
           // recursively seek pointer position
-          long pos = _Message.Position;
-          _Message.Seek(offset, SeekOrigin.Begin);
+          long pos = Message.Position;
+          Message.Seek(offset, SeekOrigin.Begin);
           try
           {
-            string domain = (new ByteReader(_Message)).ReadDomain();
+            string domain = (new ByteReader(Message)).ReadDomain();
             result.Append(domain);
           }
           finally
           {
-            _Message.Seek(pos, SeekOrigin.Begin);
+            Message.Seek(pos, SeekOrigin.Begin);
           }
           return result.ToString();
         }
 
         if (length > 0)
         {
-          result.Append(ReadAscii(length));
+          result.Append(Encoding.ASCII.GetString(ReadBytes(length)));
         }
 
         // if size of next label isn't null (end of domain name) add a period ready for next label
@@ -205,23 +162,22 @@ namespace Boethin.Net.DnsTools.DnsClient.Internal
 
     public void SeekForward(long offset)
     {
-      _Message.Seek(offset, SeekOrigin.Current);
+      Message.Seek(offset, SeekOrigin.Current);
     }
 
+    #endregion
+
+    #region static
 
     public static ushort ReadUIn16(Stream s)
     {
-      //int hi, lo;
-      //if (0 > (hi = s.ReadByte()) || 0 > (lo = s.ReadByte()))
-      //  throw new Exception("Unexpected end of stream.");
-      //return (ushort)(((hi << 8) & 0xFF00) | (lo & 0x00FF));
-
       byte[] buf = new byte[2];
       if (s.Read(buf, 0, 2) < 2)
         throw new Exception("Unexpected end of stream.");
       return (ushort)(buf[0] << 8 | buf[1]);
     }
-
+    
+    #endregion
 
   }
 }

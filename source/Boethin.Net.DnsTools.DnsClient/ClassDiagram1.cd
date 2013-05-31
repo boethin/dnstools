@@ -3,7 +3,7 @@
   <Class Name="Boethin.Net.DnsTools.DnsClient.DnsTcpClient" Collapsed="true" BaseTypeListCollapsed="true">
     <Position X="34.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAABgAAAACRAACAQgKAQAAAAAAAgAAAgAAAAAEACABA=</HashCode>
+      <HashCode>AAAAgAAAACRAACAQgKAQAAAAAAAgAAEAAAAAAAACAFg=</HashCode>
       <FileName>DnsTcpClient.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
@@ -11,7 +11,7 @@
   <Class Name="Boethin.Net.DnsTools.DnsClient.DnsUdpClient" Collapsed="true" BaseTypeListCollapsed="true">
     <Position X="29" Y="1.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>gAABAAAAACQAACAAgKAQgACABAAgAAAgAAAAAEACABA=</HashCode>
+      <HashCode>gAAAAAAAACQAACAAgKAQgACABAAgAAEAAAAAAAACAFg=</HashCode>
       <FileName>DnsUdpClient.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
@@ -30,39 +30,63 @@
       <FileName>MessageEvent.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Boethin.Net.DnsTools.DnsClient.Request" Collapsed="true">
-    <Position X="0.5" Y="4.75" Width="1.5" />
+  <Class Name="Boethin.Net.DnsTools.DnsClient.Request">
+    <Position X="8.5" Y="4.25" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
     <TypeIdentifier>
       <HashCode>AAAAAAAAAIAAAAAEAAAAAAAAAAAAABAAAAAUAAAAAAA=</HashCode>
       <FileName>Request.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Data" />
+    </ShowAsAssociation>
     <Lollipop Position="0.2" />
   </Class>
-  <Class Name="Boethin.Net.DnsTools.DnsClient.Response" Collapsed="true">
-    <Position X="2.75" Y="4.75" Width="1.5" />
+  <Class Name="Boethin.Net.DnsTools.DnsClient.Response">
+    <Position X="11.25" Y="4.25" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAQAAAAEAAAAAAAAAAAAAFAAAAAEAAAIAAA=</HashCode>
       <FileName>Response.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Data" />
+    </ShowAsAssociation>
     <Lollipop Position="0.2" />
   </Class>
-  <Class Name="Boethin.Net.DnsTools.DnsClient.DNS.Header" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="32.5" Y="1.5" Width="1.5" />
+  <Class Name="Boethin.Net.DnsTools.DnsClient.DNS.Header" BaseTypeListCollapsed="true">
+    <Position X="13" Y="2" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
     <TypeIdentifier>
       <HashCode>ACAgAEADAIAUgAKEAAAgAAAAAAIAACAAAAAAQAAIAAA=</HashCode>
       <FileName>DNS\Header.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
-  <Class Name="Boethin.Net.DnsTools.DnsClient.DNS.Message" Collapsed="true">
-    <Position X="1.75" Y="3.5" Width="1.5" />
+  <Class Name="Boethin.Net.DnsTools.DnsClient.DNS.Message">
+    <Position X="9.75" Y="0.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
     <TypeIdentifier>
       <HashCode>BCAAAIAAAAAAABAAQAACAABACEAAAFAEAAIAAABACAA=</HashCode>
       <FileName>DNS\Message.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Header" />
+    </ShowAsAssociation>
   </Class>
   <Class Name="Boethin.Net.DnsTools.DnsClient.DNS.Question" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="30.75" Y="3.5" Width="1.5" />
+    <Position X="16.5" Y="3.75" Width="1.5" />
     <Compartments>
       <Compartment Name="Methods" Collapsed="true" />
     </Compartments>
@@ -72,53 +96,67 @@
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
-  <Class Name="Boethin.Net.DnsTools.DnsClient.DNS.RR" Collapsed="true">
-    <Position X="14" Y="0.5" Width="1.5" />
+  <Class Name="Boethin.Net.DnsTools.DnsClient.DNS.RR">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
     <TypeIdentifier>
       <HashCode>AAAABAAAAQAAAAAEgAEAAAAAAAAAAIAAACAAAAAAQAA=</HashCode>
       <FileName>DNS\RR.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Base" />
+    </ShowAsAssociation>
   </Class>
-  <Class Name="Boethin.Net.DnsTools.DnsClient.DNS.RRBase" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="32.5" Y="3.5" Width="1.5" />
+  <Class Name="Boethin.Net.DnsTools.DnsClient.DNS.RRBase" BaseTypeListCollapsed="true">
+    <Position X="3.25" Y="0.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
     <TypeIdentifier>
       <HashCode>AgAAAAACAAABAAAEgACIAAAAAAAAAIAAAAAAAAAIAEQ=</HashCode>
       <FileName>DNS\RRBase.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="CLASS" />
+      <Property Name="TYPE" />
+    </ShowAsAssociation>
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="Boethin.Net.DnsTools.DnsClient.DNS.Records.A" Collapsed="true">
-    <Position X="19.75" Y="3.25" Width="1.5" />
+    <Position X="4.25" Y="5.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>DNS\Records\A.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Boethin.Net.DnsTools.DnsClient.DNS.Records.AAAA" Collapsed="true">
-    <Position X="22" Y="3.25" Width="1.5" />
+    <Position X="4.25" Y="7" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>DNS\Records\AAAA.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Boethin.Net.DnsTools.DnsClient.DNS.Records.Address" Collapsed="true">
-    <Position X="20.75" Y="1.75" Width="1.5" />
+    <Position X="2" Y="5.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAEAAEAAIAAAAAAAIAAAAAAAAAAAAA=</HashCode>
       <FileName>DNS\Records\Address.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Boethin.Net.DnsTools.DnsClient.DNS.Records.CNAME" Collapsed="true">
-    <Position X="26.5" Y="1.75" Width="1.5" />
+    <Position X="2" Y="4.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAQAAAAAEAAEAAAAAAAAAAACAAAAAAAAAAAA=</HashCode>
       <FileName>DNS\Records\CNAME.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Boethin.Net.DnsTools.DnsClient.DNS.Records.Default">
-    <Position X="1.75" Y="1.75" Width="1.5" />
+  <Class Name="Boethin.Net.DnsTools.DnsClient.DNS.Records.Default" Collapsed="true">
+    <Position X="0.5" Y="11.75" Width="1.5" />
     <Compartments>
       <Compartment Name="Methods" Collapsed="true" />
+      <Compartment Name="Properties" Collapsed="true" />
     </Compartments>
     <TypeIdentifier>
       <HashCode>AAAAAAAAAQAAAAAEAAEAAAAAAAAAAAAACAAAAAAAAAA=</HashCode>
@@ -126,56 +164,56 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Boethin.Net.DnsTools.DnsClient.DNS.Records.MX" Collapsed="true">
-    <Position X="6.25" Y="1.75" Width="1.5" />
+    <Position X="2" Y="7" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AgAAAAAAEQAAAAAEAAEAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>DNS\Records\MX.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Boethin.Net.DnsTools.DnsClient.DNS.Records.NAPTR" Collapsed="true">
-    <Position X="10.75" Y="1.75" Width="1.5" />
+    <Position X="4.25" Y="9.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AgAAAAAAAQAAAAAEgAEAAEAAAAAAAAAAAABAAAABAAA=</HashCode>
       <FileName>DNS\Records\NAPTR.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Boethin.Net.DnsTools.DnsClient.DNS.Records.NS" Collapsed="true">
-    <Position X="13" Y="1.75" Width="1.5" />
+    <Position X="4.25" Y="3.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAQAAAAAEAAEAAAAAAAAAIAAAAAAAAAAAAAA=</HashCode>
       <FileName>DNS\Records\NS.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Boethin.Net.DnsTools.DnsClient.DNS.Records.OPT" Collapsed="true">
-    <Position X="15.25" Y="1.75" Width="1.5" />
+    <Position X="2" Y="10.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAQAAAAAEAAEAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>DNS\Records\OPT.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Boethin.Net.DnsTools.DnsClient.DNS.Records.PTR" Collapsed="true">
-    <Position X="17.5" Y="1.75" Width="1.5" />
+    <Position X="4.25" Y="4.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAQAAQAAAAAEAAEAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>DNS\Records\PTR.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Boethin.Net.DnsTools.DnsClient.DNS.Records.SOA" Collapsed="true">
-    <Position X="24.25" Y="1.75" Width="1.5" />
+    <Position X="2" Y="3.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAEIAQAAABAEAAEABBQAAgAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>DNS\Records\SOA.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Boethin.Net.DnsTools.DnsClient.DNS.Records.SPF" Collapsed="true">
-    <Position X="8.5" Y="3.25" Width="1.5" />
+    <Position X="4.25" Y="8.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>DNS\Records\SPF.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Boethin.Net.DnsTools.DnsClient.DNS.Records.SRV" Collapsed="true">
-    <Position X="4" Y="1.75" Width="1.5" />
+    <Position X="2" Y="9.5" Width="1.5" />
     <Compartments>
       <Compartment Name="Methods" Collapsed="true" />
     </Compartments>
@@ -185,7 +223,10 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Boethin.Net.DnsTools.DnsClient.DNS.Records.TXT" Collapsed="true">
-    <Position X="8.5" Y="1.75" Width="1.5" />
+    <Position X="2" Y="8.25" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
     <TypeIdentifier>
       <HashCode>AAAAAAAAAQAAAAAEAAEAAgAAAAAAAAAAABAAAAAAAAA=</HashCode>
       <FileName>DNS\Records\TXT.cs</FileName>
@@ -199,7 +240,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Boethin.Net.DnsTools.DnsClient.Internal.AsyncResultNoResult" Collapsed="true">
-    <Position X="5.5" Y="3.5" Width="1.5" />
+    <Position X="10.25" Y="10.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAIgAgABABAAAEAAEAAAAEAAABAQAAAYgAIAAAA=</HashCode>
       <FileName>Internal\AsyncResult.cs</FileName>
@@ -207,7 +248,7 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="Boethin.Net.DnsTools.DnsClient.Internal.AsyncResult&lt;TResult&gt;" Collapsed="true">
-    <Position X="5.5" Y="4.75" Width="1.5" />
+    <Position X="10.25" Y="11.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAABAAAAAAAAAABAAAAAAAAAAQAAAAAAA=</HashCode>
       <FileName>Internal\AsyncResult.cs</FileName>
@@ -216,14 +257,14 @@
   <Class Name="Boethin.Net.DnsTools.DnsClient.Internal.ByteReader" Collapsed="true">
     <Position X="30.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAACAAAAgAAAAAACAAAAQkAAAhAAAUAAAACQAAAAAAA=</HashCode>
+      <HashCode>AAACAAAAgAAAAAACAAAAQkAAAgAAAEAAAACQIAAAAAA=</HashCode>
       <FileName>Internal\ByteReader.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Boethin.Net.DnsTools.DnsClient.Internal.ByteWriter" Collapsed="true">
     <Position X="32.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAIQAAAAAIBAAAAAAAABAAAAAgAAAEAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAIQAAAAAIBAAAAAAAAAAAAAAgAAAEIAAAAAA=</HashCode>
       <FileName>Internal\ByteWriter.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -237,7 +278,7 @@
   <Class Name="Boethin.Net.DnsTools.DnsClient.Logging.LogMessage" Collapsed="true">
     <Position X="29" Y="2.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAEAIAQAAAAAAAAAAABAAAAJAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAgAAAAAAEAIAQAAAAAAAAAAABAAQAJAAAAAA=</HashCode>
       <FileName>Logging\LogMessage.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -250,8 +291,27 @@
   </Class>
   <Class Name="Boethin.Net.DnsTools.DnsClient.Logging.LogMessageText" Collapsed="true">
     <Position X="34.25" Y="2.5" Width="1.5" />
+    <NestedTypes>
+      <Class Name="Boethin.Net.DnsTools.DnsClient.Logging.LogMessageText.REQUEST" Collapsed="true">
+        <NestedTypes>
+          <Class Name="Boethin.Net.DnsTools.DnsClient.Logging.LogMessageText.REQUEST.INFO" Collapsed="true">
+            <TypeIdentifier>
+              <NewMemberFileName>Logging\LogMessageText.cs</NewMemberFileName>
+            </TypeIdentifier>
+          </Class>
+        </NestedTypes>
+        <TypeIdentifier>
+          <NewMemberFileName>Logging\LogMessageText.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="Boethin.Net.DnsTools.DnsClient.Logging.LogMessageText.RESPONSE" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Logging\LogMessageText.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
     <TypeIdentifier>
-      <HashCode>AAAQAAAAAAAEAAAAAAAAAIACAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Logging\LogMessageText.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -262,7 +322,7 @@
     </TypeIdentifier>
   </Class>
   <Struct Name="Boethin.Net.DnsTools.DnsClient.Datagram" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="29" Y="4.75" Width="1.5" />
+    <Position X="9.75" Y="6.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>CCBQACAAAAAAABAEigIACAFAAAAAAIAAAAIKAAAAAiA=</HashCode>
       <FileName>Datagram.cs</FileName>
@@ -272,19 +332,19 @@
   <Interface Name="Boethin.Net.DnsTools.DnsClient.IDnsClient" Collapsed="true">
     <Position X="29" Y="6" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAQAQAAAAAACAJAAgAAAAAAAAAAAIACAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAQAQAAAAgACAIAAAAAAIBAAAAAAAACAAAA=</HashCode>
       <FileName>IDnsClient.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="Boethin.Net.DnsTools.DnsClient.Internal.IRequestWriter" Collapsed="true">
-    <Position X="32.5" Y="6" Width="1.5" />
+    <Position X="13.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Internal\IRequestWriter.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="Boethin.Net.DnsTools.DnsClient.Internal.IResponseReader" Collapsed="true">
-    <Position X="34.25" Y="6" Width="1.5" />
+    <Position X="15.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Internal\IResponseReader.cs</FileName>
@@ -311,8 +371,8 @@
       <FileName>DNS\OPCODE.cs</FileName>
     </TypeIdentifier>
   </Enum>
-  <Enum Name="Boethin.Net.DnsTools.DnsClient.DNS.QCLASS" Collapsed="true">
-    <Position X="29" Y="7.75" Width="1.5" />
+  <Enum Name="Boethin.Net.DnsTools.DnsClient.DNS.QCLASS">
+    <Position X="6.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAgAAAAAAAAAAIAAAAAAAAAAAAAAg=</HashCode>
       <FileName>DNS\QCLASS.cs</FileName>
@@ -325,8 +385,8 @@
       <FileName>DNS\QR.cs</FileName>
     </TypeIdentifier>
   </Enum>
-  <Enum Name="Boethin.Net.DnsTools.DnsClient.DNS.QTYPE" Collapsed="true">
-    <Position X="32.5" Y="7.75" Width="1.5" />
+  <Enum Name="Boethin.Net.DnsTools.DnsClient.DNS.QTYPE">
+    <Position X="6.25" Y="2" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAECAAQAAAAACAAAAiIgAAAAAAAAAIIAAQAI=</HashCode>
       <FileName>DNS\QTYPE.cs</FileName>

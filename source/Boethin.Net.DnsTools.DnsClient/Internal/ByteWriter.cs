@@ -20,40 +20,44 @@
  */
 
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.IO;
+using System.Text;
 
 namespace Boethin.Net.DnsTools.DnsClient.Internal
 {
   internal class ByteWriter
   {
-    
-    private readonly Stream _Message;
 
+    #region private
+
+    private readonly Stream Message;
+
+    #endregion
+
+    #region c'tor
 
     public ByteWriter(Stream message)
     {
-#if DEBUG
       if (object.ReferenceEquals(null, message))
         throw new ArgumentNullException("message");
       if (!message.CanWrite)
         throw new ArgumentException(
           "The stream must be writable.", "message");
-#endif
-
-      _Message = message;
+      Message = message;
     }
+
+    #endregion
+
+    #region public
 
     public void WriteByte(byte value)
     {
-      _Message.WriteByte(value);
+      Message.WriteByte(value);
     }
 
     public void WriteUInt16(ushort value)
     {
-      WriteUInt16(_Message, value);
+      WriteUInt16(Message, value);
     }
 
     public void WriteUInt16Enum<TUInt16>(TUInt16 value)
@@ -79,8 +83,8 @@ namespace Boethin.Net.DnsTools.DnsClient.Internal
       if (buf.Length > (int)byte.MaxValue)
         throw new OverflowException(String.Format(
           "Label length of {0} exceeds byte size.", buf.Length));
-      _Message.WriteByte((byte)buf.Length); // length octet
-      _Message.Write(buf, 0, buf.Length); // string octets
+      Message.WriteByte((byte)buf.Length); // length octet
+      Message.Write(buf, 0, buf.Length); // string octets
     }
 
     public void WriteDomain(string domain)
@@ -97,8 +101,10 @@ namespace Boethin.Net.DnsTools.DnsClient.Internal
         WriteLabel(domain, position, length);
         position += length;
       }
-      _Message.WriteByte((byte)0);
+      Message.WriteByte((byte)0);
     }
+
+    #endregion
 
     #region static
 
@@ -107,10 +113,6 @@ namespace Boethin.Net.DnsTools.DnsClient.Internal
       s.Write(new byte[] { 
         (byte)((value & 0xFF00) >> 8), (byte)(value & 0xFF) }, 0, 2);
     }
-
-
-
-    //public static Datagram CreateRequesteData(DNS.Request request
 
     #endregion
 
