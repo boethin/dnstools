@@ -89,7 +89,6 @@ namespace Boethin.Net.DnsTools.DnsClient.DNS
     /// </summary>
     /// <param name="qname">A domain name represented as a sequence of labels.</param>
     /// <param name="qtype">A two octet code which specifies the type of the query.</param>
-    /// <param name="qclass">A two octet code that specifies the class of the query.</param>
     public Question(string qname, QTYPE qtype)
     {
       if (String.IsNullOrEmpty(qname))
