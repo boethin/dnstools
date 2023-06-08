@@ -2,7 +2,7 @@
  * File: Boethin.Net.DnsTools.Resolution/IDnsCacheProvider.cs
  *
  * This file is part of Boethin.Net.DnsTools, a DNS debugging library.
- * Copyright (C) 2013 Sebastian Boethin <sebastian@boethin.eu>
+ * Copyright (C) 2013 Sebastian Boethin <boethin@xn--domain.net>
  * 
  * 
  * MIT License
